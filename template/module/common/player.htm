@@ -1,0 +1,24 @@
+<!--
+====================
+@腾讯视频
+@文档地址：
+http://tgideas.qq.com/webplat/info/news_version3/804/25810/25811/25812/25814/m16274/201611/522294.shtml
+====================
+-->
+<div id="mod_player" class="video">
+</div>
+<script src="http://imgcache.qq.com/tencentvideo_v1/tvp/js/tvp.player_v2.js"></script>
+<script>
+    var video = new tvp.VideoInfo();
+    video.setVid("i001216370f");
+    var player = new tvp.Player();
+    player.create({
+        width: 480,
+        height: 360,
+        video: video,
+        modId: "mod_player",
+        pic: "http://ossweb-img.qq.com/images/roco/act/a20120925movie/video_pic.jpg",        //视频封面地址
+        vodFlashSkin: "http://imgcache.qq.com/minivideo_v1/vd/res/skins/TencentPlayerMiniSkin.swf",  //精简皮肤        
+        autoplay: true   //是否自动播放
+    });
+</script> 

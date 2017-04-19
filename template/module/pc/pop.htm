@@ -1,0 +1,31 @@
+<!--
+====================
+@通用弹出层 
+@文档地址：
+http://tgideas.qq.com/webplat/info/news_version3/804/25810/25811/25813/25816/m16274/201611/522576.shtml
+====================
+-->
+<p>
+	弹出id为test1的div：<button onClick="TGDialogS('test1')">点击弹出</button>
+</p>
+<div class="dialog" id="test1" style="display:none">
+	<div class="dia-con">我是弹出层test1</div>
+	<a class="dia-close" href="javascript:showDialog.hide()" title="关闭">×</a>
+</div>
+<script>
+function TGDialogS(e) {
+	need("biz.dialog-min", function(Dialog) {
+		Dialog.show({
+			id: e,
+			bgcolor: '#000', //弹出“遮罩”的颜色，格式为"#FF6600"，可修改，默认为"#fff"
+			opacity: 50 //弹出“遮罩”的透明度，格式为｛10-100｝，可选
+		});
+	});
+}
+
+function closeDialog() {
+	need("biz.dialog-min", function(Dialog) {
+		Dialog.hide();
+	});
+}
+</script>

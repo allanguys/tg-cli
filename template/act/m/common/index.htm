@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="gbk" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,maximum-scale=1"/>
+<meta name="format-detection" content="telephone=no" />
+<meta content="yes" name="mobile-web-app-capable">
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="robots" content="all" />
+<meta name="Copyright" content="Tencent" />
+<meta name="author" content="Tencent-{{team}}" />
+<meta name="Description" content="" />
+<meta name="Keywords" content="" />
+<!-- 设计：{{designAuthor}}  | 重构：{{author}} | 创建：{{time}}  -->
+<title>-官方网站-腾讯游戏</title>
+</head>
+
+<body>
+
+{{{milo}}}
+{{{jsLib}}}
+
+
+{{{tab}}}
+
+
+{{{scroll}}}
+
+
+
+{{{login}}}
+
+
+
+{{{player}}}
+
+
+
+{{{lottery}}}
+
+
+
+{{{pop}}}
+<!--通用统计代码-->
+<script src="//ossweb-img.qq.com/images/js/PTT/ping_tcss_tgideas_https_min.js"></script>
+<script>
+//此段代码不能放到外链JS中，
+var setSite={ //设置网站属性
+ siteType:"{{appName}}", //必填项:"os"代表是官网，如果不是，则填写actName例如a20160701xxx
+ pageType:"index", //必填项:本页面的定位；按照页面含义填写例如main||list||detail||download||share||page1||pageN
+ pageName:"首页", //必填项:页面中文名
+ osact:0, //选填项:是否是官网专题(在官网运营的专题)boolean；默认是0；可以在链接上加入参数osact=1来灵活设置
+ ingame:0, //选填项:是否投放在游戏APP内boolean；默认是0；可以在链接上加入参数ingame=1来灵活设置
+ stayTime:0 //选填项:是否需要统计停留时长boolean；默认是0
+}
+if(typeof(pgvMain)=='function')pgvMain();//千万不能忘记！
+</script>
+</body>
+</html>

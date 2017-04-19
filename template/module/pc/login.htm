@@ -1,0 +1,32 @@
+<!--
+====================
+@PC通用登录
+@文档地址：
+http://tgideas.qq.com/webplat/info/news_version3/804/25810/25811/25812/25814/m16274/201611/521122.shtml
+====================
+-->
+
+<script>
+milo.addEvent(g("dologin"), "click", function() {
+	need("biz.login-min", function(LoginManager) {
+		LoginManager.init({
+			needReloadPage: true
+		});
+		LoginManager.login();
+	});
+	return false;
+});
+milo.addEvent(g("dologout"), "click", function() {
+	need("biz.login-min", function(LoginManager) {
+		LoginManager.logout();
+	});
+	return false;
+});
+milo.ready(function() {
+	need("biz.login-min", function(LoginManager) {
+		LoginManager.checkLogin(function() {
+			g("login_qq_span").innerHTML = LoginManager.getUserUin(); //获取QQ号
+		});
+	});
+});
+</script>

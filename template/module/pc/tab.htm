@@ -1,0 +1,92 @@
+<!--
+====================
+@通用选项卡
+@文档地址：
+http://tguide.qq.com/main/tab-component.htm
+====================
+-->
+<style>
+
+.tab{width: 350px; padding-top: 10px; border: 1px solid #527CC9; background-color: #527CC9; margin: 50px auto; height: 180px; }
+.tab .bd{background-color: #fff; height: 150px;}
+.tab .hd a{display: block;  height: 25px; line-height: 25px; color:#000; text-align: center; text-decoration: none;}
+.tab .hd li{float: left; width: 70px; background-color: #A2C8F4;}
+.tab .hd{height: 25px; }
+.tab .hd .on{background-color: #fff;}
+.tab .bd p{padding:20px 5px; text-indent: 2em;}
+
+/* 控制显示/隐藏方式1 display: block/none */
+.tab .tab-panel{display: none }
+.tab .dis{display: block }  
+
+</style>
+<div class="tab" id="tab">	
+	<div class="hd">
+		<ul>
+			<li><a href="###">综合</a></li>
+			<li><a href="###">公告</a></li>
+			<li><a href="###">活动</a></li>
+			<li><a href="###">赛事</a></li>
+			<li><a href="###">其他</a></li>
+		</ul>
+	</div>
+	<div class="bd">
+			<div class="tab-panel">
+				<p>综合综合综合综合综合综合综合综合综合综合综合综合综合综合综合综合</p>
+			</div>
+			<div class="tab-panel">
+				<p>公告公告公告公告公告公告公告公告公告公告公告公告公告公告公告公告</p>
+			</div>
+			<div class="tab-panel">
+				<p>活动活动活动活动活动活动活动活动活动活动活动活动活动活动活动活动</p>
+			</div>
+			<div class="tab-panel">
+				<p>赛事赛事赛事赛事赛事赛事赛事赛事赛事赛事赛事赛事赛事赛事赛事赛事</p>
+			</div>
+			<div class="tab-panel">
+				<p>其他其他其他其他其他其他其他其他其他其他其他其他其他其他其他其他</p>
+			</div>
+
+	</div>
+</div>
+
+
+<script>
+
+need("biz.tabs",function (tabs){
+	
+	//简单调用
+	tabs.init("tab", "tab-panel");
+
+	//滑动切换
+	tabs.init("slideTab", "tab-panel",{
+		timeout: 80,//延迟切换时间。默认参数为60;
+		currCls: "on",//设置当前标签（li）class 名。默认参数为"on";
+		disCls: "dis",//控制显示class名。默认参数为"dis";
+		event: "mouseover",//事件类型。默认为"mouseover";
+		onFinish: callback, //回调函数。需要定义callback函数;
+		animation: "slide",//有动画效果设置此参数。参数可选slide/fade (滚动/渐入)
+             change: 350,//当有动画slide效果，设置此参数（每次移动的PX值）。
+		auto: true,//是否自动切换。默认为false
+		Pause: 300 //每次自动停顿时间(auto为true时有效)
+	});
+
+	//渐变切换
+	tabs.init("fadeTab", "tab-panel",{
+		timeout: 80,//延迟切换时间。默认参数为60;
+		currCls: "on",//设置当前标签（li）class 名。默认参数为"on";
+		disCls: "dis",//控制显示class名。默认参数为"dis";
+		event: "mouseover",//事件类型。默认为"mouseover";
+		animation: "fade",//有动画效果设置此参数。参数可选slide/fade (滚动/渐入)
+		auto: true,//是否自动切换。默认为false
+		Pause: 300 //每次自动停顿时间(auto为true时有效)
+	})
+
+})
+
+
+function callback(n, index, panel) { //切换完成回调函。数参数为：上一个索引值,当前索引值,当前显示块
+    // dosomething
+}
+
+</script>

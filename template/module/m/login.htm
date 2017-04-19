@@ -1,0 +1,39 @@
+<!--
+====================
+@IEGÒÆ¶¯¶ËÍ¨ÓÃµÇÂ¼
+@ÎÄµµµØÖ·£º
+http://tgideas.qq.com/webplat/info/news_version3/804/25810/25811/25812/25814/m16274/201611/521122.shtml
+====================
+-->
+   <div>
+       <div id="unlogin">hi£¬Ç×°®µÄ<a href="javascript:login();">µÇÂ¼</a></div>
+       <div id="logined" style="display:none;">hi£¬<span id='login_nickname_span'></span><span id='login_qq_span'></span><a href="javascript:logout();">×¢Ïú</a></div>
+   </div>
+
+    <script src="http://ossweb-img.qq.com/images/js/login/loginmanagerv3.js" charset="gb2312"></script>
+
+    <script>
+        //µÇÂ½
+        function login() {
+            parent.need("biz.login", function (LoginManager) {
+                LoginManager.login();
+            });
+
+        };
+        function logout() {
+            parent.need("biz.login", function (LoginManager) {
+                LoginManager.logout();
+            });
+        };
+        LoginManager.checkLogin(function () {
+            if ($E("#login_nickname_span")) {
+                LoginManager.getNickName(function (loginInfo) {
+                    if (loginInfo.isLogin) {
+                        $E("#login_nickname_span").innerHTML = loginInfo.nickName;
+                    }
+                });
+            }
+
+        });
+
+    </script>
