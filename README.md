@@ -1,5 +1,5 @@
 
-#Tg-cli - 互娱网站构建脚手架
+# Tg-cli - 互娱网站构建脚手架
 
 `Tg-cli`是一个构建互娱网站的脚手架工具，
 主要功能有：
@@ -15,20 +15,22 @@
 >- 压缩图片、样式、脚本
 
 
-##安装
+## 安装
 环境: [Node.js](https://nodejs.org/en/download/) , npm  3.0+、 [Git](https://git-scm.com/).
 ``` bash
 $ npm install -g tg-cli
 ```
 
 
-##新建项目
+## 新建项目
 ``` bash
 $ tg install
 ```
 
-##图解
+## 图解
+
 **项目初始化**
+
 - 配置项
 ![enter image description here](https://raw.githubusercontent.com/allanguys/tg-cli/master/READEME/ex.jpg)
 
@@ -36,6 +38,7 @@ $ tg install
 
 
 **项目完成后**
+
 进入项目开发目录
 
 ``` bash
@@ -53,7 +56,7 @@ $ gulp pure
 ```
 
 
-##项目即时刷新配置
+## 项目即时刷新配置
 
 1. 安装chrome 插件 [LiveReload](hhttps://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
 
@@ -74,5 +77,5 @@ $ gulp watch
 ![enter image description here](https://raw.githubusercontent.com/allanguys/tg-cli/master/READEME/liveload.jpg)
 
 
-##模板更新
+## 模板更新
 待续..
