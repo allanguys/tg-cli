@@ -15,19 +15,20 @@
 >- 压缩图片、样式、脚本
 
 
-##安装##
+## 安装
 环境: [Node.js](https://nodejs.org/en/download/) , npm  3.0+、 [Git](https://git-scm.com/).
 ``` bash
 $ npm install -g tg-cli
 ```
 
-##安装##
+## 安装
 环境: [Node.js](https://nodejs.org/en/download/) , npm  3.0+、 [Git](https://git-scm.com/).
 ``` bash
 $ npm install -g tg-cli
 ```
 
-##使用##
+
+## 使用
 ``` bash
 $ tg install
 ```
