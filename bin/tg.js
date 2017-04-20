@@ -11,9 +11,7 @@ var ora = require('ora');
 
 
 var Mustache = require('../lib/mustache');
-
 var shelljs = require('shelljs/global');
-
 var rootPath = __dirname.replace(/(bin)|(lib)/,'');
 var nowPath = process.cwd();
 //config file
@@ -242,21 +240,34 @@ function createTemplate(path, type, terminal) {
 						  spinner.stop();
 						  ora(chalk.green('目录生成成功！')).succeed();
 					});
-					var spinnerInstall = ora('安装gulp依赖').start();
-					exec('npm install', {cwd: nowPath+ '\\' + configTemp.appName + ''},function(err){
-						if(err){
+					var spinnerInstall = ora('安装依赖').start();
+				//安装依赖	
+				exec('npm install --save-dev', {cwd: nowPath+ '\\' + configTemp.appName + ''},function(err){
+					if(err){
 							console.log('安装依赖出错，请检查网络环境或在目录中重试npm install');					console.log('')
 							console.log(chalk.gray('您的文件目录路径：' + nowPath+ '\\' + configTemp.appName + '\\'));
 						}else{
-							spinnerInstall.stop();
-							console.log('')
-							ora(chalk.green('gulp相关依赖安装成功！')).succeed();
-							console.log('')
-							console.log(chalk.gray('您的文件路径：' + nowPath+ '\\' + configTemp.appName + '\\'));
-							console.log(chalk.gray('请愉快的coding吧:)'));	
+							ora(chalk.green('相关依赖安装成功！')).succeed();
+							//安装gulp
+							exec('npm install  gulp -g --save-dev', {cwd: nowPath+ '\\' + configTemp.appName + ''},function(err){ 
+									if(err){
+										console.log('安装依赖出错，请检查网络环境或在目录中重试npm install');					console.log('')
+										console.log(chalk.gray('您的文件目录路径：' + nowPath+ '\\' + configTemp.appName + '\\'));
+									}else{
+										spinnerInstall.stop();
+										console.log('')
+										ora(chalk.green('gulp安装成功！')).succeed();
+										console.log('')
+										console.log(chalk.gray('您的文件路径：' + nowPath+ '\\' + configTemp.appName + '\\'));
+										console.log(chalk.gray('请愉快的coding吧:)'));	
+									}
+					        });
+							
+							
+							
 						}
 
-					});
+				 });
 				});
 		      });
 			});
