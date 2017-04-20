@@ -224,20 +224,23 @@ function createTemplate(path, type, terminal) {
 
 		var M = Mustache.render(str, configTemp);
 		var spinner = ora('正在生成...').start();
+	    //复制模板目录					
+        fs.copy(templatePath+ path + '/',nowPath+ '\\' + configTemp.appName + '/', err => {
+		if(err) return console.error(err);	
+		//生成首页
 		fs.ensureDir(nowPath+ '\\' +configTemp.appName + '', err => {
 		  if(err) return console.error(err);
 				fs.writeFile(nowPath+ '\\' + configTemp.appName + '/index.htm', iconv.encode(M, 'gbk'), function(err) {
 					if(err) return console.error(err);
+
+
 			 //生成配置文件
              fs.writeFile(nowPath+ '\\' +configTemp.appName + '/tg_config.json',tg_config, function(err) {
 					if(err) return console.error(err);
 			
 					fs.copy(templatePath+'/gulp',nowPath+ '\\' + configTemp.appName + '/', err => {
-						fs.copy(templatePath+type+'/common/ossweb-img',nowPath+ '\\' + configTemp.appName + '/ossweb-img', err => {
-						  if (err) return console.error(err)
 						  spinner.stop();
 						  ora(chalk.green('目录生成成功！')).succeed();
-						}) 
 					});
 					var spinnerInstall = ora('安装gulp依赖').start();
 					exec('npm install', {cwd: nowPath+ '\\' + configTemp.appName + ''},function(err){
@@ -257,6 +260,9 @@ function createTemplate(path, type, terminal) {
 				});
 		      });
 			});
+			
+		  });	
+			
 		})
 
 
