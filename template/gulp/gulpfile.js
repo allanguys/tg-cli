@@ -121,6 +121,6 @@ for(var i = 0; i < picPath.length; i++) {
 gulp.task('default', deps_dev, function() {
     console.log('专题分离完成：）')
 });
-gulp.task('dev', deps, function() {
+gulp.task('pure', deps, function() {
     console.log('专题分离完成：）')
 });
