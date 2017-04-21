@@ -29,7 +29,7 @@ $ npm install -g tg-cli
 $ tg install
 ```
 
-## 图解
+## 使用
 
 
 **项目初始化**
@@ -87,6 +87,7 @@ $ gulp watch
 4. 用任意web server在chrome中打开页面，例`127.0.0.1/yourProject/index.htm`
 
 5. 点击浏览器右上角Liveload插件
+
 ![enter image description here](https://raw.githubusercontent.com/allanguys/tg-cli/master/READEME/liveload.jpg)
 
 
