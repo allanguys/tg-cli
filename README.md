@@ -90,6 +90,7 @@ $ gulp pure
 
 ## 安装
 环境: [Node.js](https://nodejs.org/en/download/) , npm  3.0+、 [Git](https://git-scm.com/).
+
 ``` bash
 $ npm install -g tg-cli
 ```
@@ -170,9 +171,14 @@ $ gulp watch
 * template/
     *  act/   `专题模板`
         *  pc/  `PC模板`
+        
                 *  comm/  `通用模板`
+                
                 *  wt/  `战雷单独模板`
+                
                 *  .../  `其他移动端单独模板`
+                
         *  m/  `移动端通用模板`
                 *  comm/  `通用模板`
+                
                 *  .../  `其他移动端单独模板`
