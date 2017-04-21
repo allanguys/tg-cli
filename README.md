@@ -70,7 +70,7 @@ $ gulp pure
 ## 项目即时刷新配置
 
 1. 安装chrome 插件:
- [LiveReload](hhttps://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
+[LiveReload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
 
 2. 进入项目开发目录:
 
