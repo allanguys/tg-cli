@@ -9,44 +9,40 @@ var figlet = require('figlet');
 var iconv = require('iconv-lite');
 var ora = require('ora');
 
-
 var Mustache = require('../lib/mustache');
 var shelljs = require('shelljs/global');
-var rootPath = __dirname.replace(/(bin)|(lib)/,'');
+var rootPath = __dirname.replace(/(bin)|(lib)/, '');
 var nowPath = process.cwd();
 //config file
-var configFile = rootPath+'tg_config.json';
+var configFile = rootPath + 'tg_config.json';
 var templatePath = rootPath + 'template/';
 //lib
 
 var installConfig = require('../lib/installConfig.js');
+var package = require(rootPath + '/package.json');
 
 //temp
 var configTemp = {};
 var dt = new Date();
-
-
-
-//fs.readJsonSync(rootPath+'tg_config.json',configTemp);
-
+var installGulp = true;
 //初始化config
 function initconfigTemp() {
-	fs.ensureFileSync(nowPath+ '\\' + configFile, (err, contents) => {
+	fs.ensureFileSync(nowPath + '\\' + configFile, (err, contents) => {
 		if(err) console.error(err)
 		configTemp = contents;
 	})
-}		
-configTemp['time'] = dt.getFullYear() + '-' + (dt.getMonth() + 1) + '-' + dt.getDate();
+}
 
-
-program
-	.option('i, install', '安装')
-	.parse(process.argv);
-
+program.option('-i, --install [arg]', '安装');
+program.version(package.version);
+program.parse(process.argv);
 //安装
 if(program.install) {
-	//初始化config
-	//initconfigTemp();
+
+	console.log(program.install.length > 0 && program.install[0] == 'pure')
+	if(program.install.length > 0 && program.install[0] == 'pure') {
+		installGulp = false
+	}
 	console.log(
 		chalk.green(
 			figlet.textSync("TG CLI")
@@ -56,7 +52,9 @@ if(program.install) {
 		assignConfig(args)
 		//name
 		nameInit();
-	})
+	});
+	configTemp['time'] = dt.getFullYear() + '-' + (dt.getMonth() + 1) + '-' + dt.getDate();
+
 }
 
 //专题名
@@ -72,15 +70,15 @@ function authorInit() {
 	inquirer.prompt(installConfig.author).then(function(args) {
 		assignConfig(args);
 		//游戏名
-		if(args.author.toLowerCase() == 'cp'){
+		if(args.author.toLowerCase() == 'cp') {
 			configTemp['designAuthor'] = 'cp';
 			//游戏名
 			gameName()
-		}else{
+		} else {
 			//设计师名
 			designAuthorInit();
 		}
-		
+
 	})
 };
 //作者名
@@ -159,7 +157,7 @@ function createrFn() {
 //公用模块
 function addMoudle(type, terminal) {
 	//milo
-	if(configTemp.module.length > 0 ) {
+	if(configTemp.module.length > 0) {
 		var milo = fs.readFileSync(templatePath + 'module/' + terminal + '/milo.htm');
 		configTemp['milo'] = iconv.decode(milo, 'gbk');
 	}
@@ -175,107 +173,115 @@ function addMoudle(type, terminal) {
 		configTemp['pop'] = iconv.decode(pop, 'gbk');
 	}
 	//jsLib
-	  var jsLib = fs.readFileSync(templatePath + 'module/' + terminal + '/jslib.htm')
-	  configTemp['jsLib'] = iconv.decode(jsLib, 'gbk');
+	var jsLib = fs.readFileSync(templatePath + 'module/' + terminal + '/jslib.htm')
+	configTemp['jsLib'] = iconv.decode(jsLib, 'gbk');
 
 	//视频
-	if(configTemp.module.indexOf('视频')>= 0){
-	  var player = fs.readFileSync(templatePath + 'module/common/player.htm')
-	  configTemp['player'] = iconv.decode(player, 'gbk');
+	if(configTemp.module.indexOf('视频') >= 0) {
+		var player = fs.readFileSync(templatePath + 'module/common/player.htm')
+		configTemp['player'] = iconv.decode(player, 'gbk');
 	}
 	//选项卡
-	if(configTemp.module.indexOf('选项卡')>= 0){
-	  var tab = fs.readFileSync(templatePath + 'module/' + terminal + '/tab.htm')
-	  configTemp['tab'] = iconv.decode(tab, 'gbk');
+	if(configTemp.module.indexOf('选项卡') >= 0) {
+		var tab = fs.readFileSync(templatePath + 'module/' + terminal + '/tab.htm')
+		configTemp['tab'] = iconv.decode(tab, 'gbk');
 	}
 	//轮播图
-	if(configTemp.module.indexOf('轮播图')>= 0){
-	  var scroll = fs.readFileSync(templatePath + 'module/' + terminal + '/scroll.htm')
-	  configTemp['scroll'] = iconv.decode(scroll, 'gbk');
+	if(configTemp.module.indexOf('轮播图') >= 0) {
+		var scroll = fs.readFileSync(templatePath + 'module/' + terminal + '/scroll.htm')
+		configTemp['scroll'] = iconv.decode(scroll, 'gbk');
 	}
 	//抽奖
-	if(configTemp.module.indexOf('方形抽奖')>= 0){
-	  var lottery = fs.readFileSync(templatePath + 'module/' + terminal + '/lottery.htm')
-	  configTemp['lottery'] = iconv.decode(lottery, 'gbk');
+	if(configTemp.module.indexOf('方形抽奖') >= 0) {
+		var lottery = fs.readFileSync(templatePath + 'module/' + terminal + '/lottery.htm')
+		configTemp['lottery'] = iconv.decode(lottery, 'gbk');
 	}
-
-	
 }
 //创建模板
 function createTemplate(path, type, terminal) {
-
 
 	var tg_config = JSON.stringify(configTemp);
 	//通用模块集成
 	addMoudle(type, terminal)
 	//作者
-    if( configTemp['author'].toLowerCase() == 'cp'){
-    	configTemp['author'] = 'cp'
-    	configTemp['team'] = 'cp'
-    }else{
-    	configTemp['team'] = 'Tgideas'
-    }
-	
+	if(configTemp['author'].toLowerCase() == 'cp') {
+		configTemp['author'] = 'cp'
+		configTemp['team'] = 'cp'
+	} else {
+		configTemp['team'] = 'Tgideas'
+	}
+
 	fs.readFile(templatePath + path + '/index.htm', function(err, buffer) {
 		if(err) throw err;
 		var str = iconv.decode(buffer, 'gbk');
 
 		var M = Mustache.render(str, configTemp);
 		var spinner = ora('正在生成...').start();
-	    //复制模板目录					
-        fs.copy(templatePath+ path + '/',nowPath+ '\\' + configTemp.appName + '/', err => {
-		if(err) return console.error(err);	
-		//生成首页
-		fs.ensureDir(nowPath+ '\\' +configTemp.appName + '', err => {
-		  if(err) return console.error(err);
-				fs.writeFile(nowPath+ '\\' + configTemp.appName + '/index.htm', iconv.encode(M, 'gbk'), function(err) {
+		//复制模板目录					
+		fs.copy(templatePath + path + '/', nowPath + '\\' + configTemp.appName + '/', err => {
+			if(err) return console.error(err);
+			//生成首页
+			fs.ensureDir(nowPath + '\\' + configTemp.appName + '', err => {
+				if(err) return console.error(err);
+				fs.writeFile(nowPath + '\\' + configTemp.appName + '/index.htm', iconv.encode(M, 'gbk'), function(err) {
 					if(err) return console.error(err);
 
+					//生成配置文件
+					fs.writeFile(nowPath + '\\' + configTemp.appName + '/tg_config.json', tg_config, function(err) {
+						if(err) return console.error(err);
 
-			 //生成配置文件
-             fs.writeFile(nowPath+ '\\' +configTemp.appName + '/tg_config.json',tg_config, function(err) {
-					if(err) return console.error(err);
-			
-					fs.copy(templatePath+'/gulp',nowPath+ '\\' + configTemp.appName + '/', err => {
-						  spinner.stop();
-						  ora(chalk.green('目录生成成功！')).succeed();
-					});
-					var spinnerInstall = ora('安装依赖').start();
-				//安装依赖	
-				exec('npm install --save-dev', {cwd: nowPath+ '\\' + configTemp.appName + ''},function(err){
-					if(err){
-							console.log('安装依赖出错，请检查网络环境或在目录中重试npm install');					console.log('')
-							console.log(chalk.gray('您的文件目录路径：' + nowPath+ '\\' + configTemp.appName + '\\'));
-						}else{
-							ora(chalk.green('相关依赖安装成功！')).succeed();
-							//安装gulp
-							exec('npm install  gulp -g --save-dev', {cwd: nowPath+ '\\' + configTemp.appName + ''},function(err){ 
-									if(err){
-										console.log('安装依赖出错，请检查网络环境或在目录中重试npm install');					console.log('')
-										console.log(chalk.gray('您的文件目录路径：' + nowPath+ '\\' + configTemp.appName + '\\'));
-									}else{
-										spinnerInstall.stop();
+						fs.copy(templatePath + '/gulp', nowPath + '\\' + configTemp.appName + '/', err => {
+							spinner.stop();
+							console.log('')
+							ora(chalk.green('目录生成成功！')).succeed();
+							if(installGulp) {
+								var spinnerInstall = ora('安装依赖').start();
+								//安装依赖	
+								exec('npm install --save-dev', {
+									cwd: nowPath + '\\' + configTemp.appName + ''
+								}, function(err) {
+									if(err) {
+										console.log('安装依赖出错，请检查网络环境或在目录中重试npm install');
 										console.log('')
-										ora(chalk.green('gulp安装成功！')).succeed();
-										console.log('')
-										console.log(chalk.gray('您的文件路径：' + nowPath+ '\\' + configTemp.appName + '\\'));
-										console.log(chalk.gray('请愉快的coding吧:)'));	
+										console.log(chalk.gray('您的文件目录路径：' + nowPath + '\\' + configTemp.appName + '\\'));
+									} else {
+										ora(chalk.green('相关依赖安装成功！')).succeed();
+										//安装gulp
+										exec('npm install  gulp -g --save-dev', {
+											cwd: nowPath + '\\' + configTemp.appName + ''
+										}, function(err) {
+											if(err) {
+												console.log('安装依赖出错，请检查网络环境或在目录中重试npm install');
+												console.log('')
+												console.log(chalk.gray('您的文件目录路径：' + nowPath + '\\' + configTemp.appName + '\\'));
+											} else {
+												spinnerInstall.stop();
+												console.log('')
+												ora(chalk.green('gulp安装成功！')).succeed();
+												console.log('')
+												console.log(chalk.gray('您的文件路径：' + nowPath + '\\' + configTemp.appName + '\\'));
+												console.log(chalk.gray('请愉快的coding吧:)'));
+											}
+										});
 									}
-					        });
-							
-							
-							
-						}
+								});
+							} else {
+								console.log('');
+								console.log(chalk.gray('您的文件路径：') + chalk.gray(nowPath + '\\' + configTemp.appName + '\\'));
+								console.log('');
+								console.log(chalk.gray('您选择没有安装gulp依赖，您可以手动安装依赖：'));
+								console.log('');
+								console.log('cd  ' + nowPath + '\\' + configTemp.appName + '\\');
+								console.log('npm install --save-dev');
+								console.log('npm install --save-dev -g gulp');
+							}
 
-				 });
+						});
+					});
 				});
-		      });
 			});
-			
-		  });	
-			
-		})
 
+		});
 
-
-}
+	})
+};
