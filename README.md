@@ -59,13 +59,13 @@ $ tg install pure
 
 ### 项目完成后
 
-**1. ** 进入项目开发目录
+**1.** 进入项目开发目录
 
 ``` bash
 $ cd <新建的目录>
 ```
 
-**2. ** 分离
+**2.** 分离
 
 >**推荐** - 携带相关开发配置项
 
@@ -83,23 +83,23 @@ $ gulp pure
 
 ## 项目即时刷新配置
 
-**1. ** 安装chrome 插件: [LiveReload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
+**1.** 安装chrome 插件: [LiveReload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
 
-**2. ** 进入项目开发目录:
+**2.** 进入项目开发目录:
 
 ``` bash
 $ cd <新建的目录>
 ```
 
-**3. ** 启动watch task:
+**3.** 启动watch task:
 
 ``` bash
 $ gulp watch
 ```
 
-**4. ** 用任意web server在chrome中打开页面，例`127.0.0.1/yourProject/index.htm`
+**4.** 用任意web server在chrome中打开页面，例`127.0.0.1/yourProject/index.htm`
 
-**5. ** 点击浏览器右上角Liveload插件
+**5.** 点击浏览器右上角Liveload插件
 
 ![enter image description here](https://raw.githubusercontent.com/allanguys/tg-cli/master/READEME/liveload.jpg)
 
