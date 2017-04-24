@@ -149,9 +149,12 @@ $ gulp watch
 
 |语法  | 值| 释义 |
 |--------- | --------|
-|{{time}}    |  2017-04-24 | 创建时间 |
+|{{time}}  |  2017-04-24 | 创建时间 |
 |{{team}}  | cp/tgideas | 创建的团队 |
 |{{author}}  | cp/昵称 | 创建文档的前端重构|
+
+
+
 |{{designAuthor}}  | cp/昵称 |创建文档的设计师，如重构是cp则设计师默认为cp |
 |{{{milo}}}  | `<script src=".."></script>` | milo库，[文档](http://tgideas.qq.com/milo/) |
 |{{{jsLib}}}  | `<script src=".."></script>` | jquery/zepto库 (根据终端类型自动适配) |
