@@ -22,12 +22,12 @@
 $ npm install -g tg-cli
 ```
 
+----------
 
-## 用法
-
-**项目初始化**
+## 使用
 
 - 安装gulp依赖
+
 ``` bash
 $ tg install
 ```
@@ -39,13 +39,13 @@ $ tg install
 $ tg install pure
 ```
 
+----------
 
 ## 图解
 
-----------
 
 
-**项目初始化**
+### 项目初始化
 
 - 配置项目目录
 
@@ -54,58 +54,62 @@ $ tg install pure
 - 配置完成后将自动在项目目录安装gulp依赖
 
 
-----------
 
 
-**项目完成后**
 
-**1. **进入项目开发目录
+### 项目完成后
+
+**1. ** 进入项目开发目录
 
 ``` bash
 $ cd <新建的目录>
 ```
 
-**2. **分离
+**2. ** 分离
 
 >**推荐** - 携带相关开发配置项
 
 ``` bash
 $ gulp
 ```
-----------
+
 >**不推荐** - 纯净版,不包含配置项
 
 ``` bash
 $ gulp pure
 ```
 
+----------
 
 ## 项目即时刷新配置
 
-**1. **安装chrome 插件: [LiveReload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
+**1. ** 安装chrome 插件: [LiveReload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
 
-**2. **进入项目开发目录:
+**2. ** 进入项目开发目录:
 
 ``` bash
 $ cd <新建的目录>
 ```
 
-**3. **启动watch task:
+**3. ** 启动watch task:
 
 ``` bash
 $ gulp watch
 ```
 
-**4. **用任意web server在chrome中打开页面，例`127.0.0.1/yourProject/index.htm`
+**4. ** 用任意web server在chrome中打开页面，例`127.0.0.1/yourProject/index.htm`
 
-**5. **点击浏览器右上角Liveload插件
+**5. ** 点击浏览器右上角Liveload插件
 
 ![enter image description here](https://raw.githubusercontent.com/allanguys/tg-cli/master/READEME/liveload.jpg)
 
 
-## 模板定制相关
+----------
 
-**目录：**
+## 模板定制
+
+### 目录：
+
 ``` bash
     \---template
     +---act      <专题模板>
@@ -131,9 +135,8 @@ $ gulp watch
         \---pc       <PC端通用模块>
 ``` 
 
-----------
 
-**模板语法：**
+### 模板语法：
 
 模板用Mustache语法配置载入相关模块嵌入和相关配置，
 目前支持的自定义配置：
