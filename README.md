@@ -67,6 +67,8 @@ $ cd <新建的目录>
 
 **2.** 分离
 
+如初始化未安装相关依赖需要  `npm install --save-dev`,如当前电脑未安装`gulp`，还需  `npm install gulp -g --save-dev`
+
 >**推荐** - 携带相关开发配置项
 
 ``` bash
