@@ -138,18 +138,17 @@ $ gulp watch
 模板用Mustache语法配置载入相关模块嵌入和相关配置，
 自定义单独模板目前可支持的配置有：
 
-语法  | 值| 释义 |
---------- | --------|
-{{time}}    |  2017-04-24 | 创建时间 |
-{{team}}  | cp/tgideas | 创建的团队 |
-{{author}}  | cp/昵称 | 创建文档的前端重构|
-{{designAuthor}}  | cp/昵称 |创建文档的设计师，如重构是cp则设计师默认为cp |
-{{{milo}}}  | `<script src=".."></script>` | milo库，[文档](http://tgideas.qq.com/milo/) |
-{{{jsLib}}}  | `<script src=".."></script>` | jquery/zepto库 (根据终端类型自动适配) |
-{{{tab}}}  | `//tab公用模块页面片(包含结构、css、脚本)` | tab组件( [PC端文档](http://tguide.qq.com/main/tab-component.htm),[移动端文档](http://tgideas.github.io/motion/doc/data/component/mo.Tab.html)) |
-{{{scroll}}}  | `//轮播公用模块页面片(包含结构、css、脚本)` | 轮播组件( [PC端文档](http://tguide.qq.com/main/picscroll-component.htm),[移动端文档](http://tgideas.github.io/motion/doc/data/component/mo.Slide.html)) |
-{{{login}}}  | `//登录公用模块页面片(包含结构、css、脚本)` | 登录组件( [PC端文档](http://tgideas.qq.com/webplat/info/news_version3/804/25810/25811/25812/25814/m16274/201611/521122.shtml),[移动端文档](http://tgideas.qq.com/webplat/info/news_version3/804/25810/25811/25812/25814/m16274/201611/521122.shtml)) |
-{{{player}}}  | `//视频公用模块页面片(包含结构、css、脚本)` | 视频组件( [PC端文档](http://tgideas.qq.com/webplat/info/news_version3/804/25810/25811/25812/25814/m16274/201611/522294.shtml),[移动端文档](http://tgideas.qq.com/webplat/info/news_version3/804/25810/25811/25812/25814/m16274/201611/522294.shtml)) |
-{{{lottery}}}  | `//抽奖模块页面片(包含结构、css、脚本)` | 抽奖组件( [PC端文档](http://tgideas.qq.com/webplat/info/news_version3/804/25810/25811/25812/25814/m16274/201611/521098.shtml),[移动端文档](http://tgideas.qq.com/webplat/info/news_version3/804/25810/25811/25812/25815/m16274/201612/529504.shtml)) |
-{{{pop}}}  | `//弹窗模块页面片(包含结构、css、脚本)` | 弹窗组件( [PC端文档](http://tgideas.qq.com/webplat/info/news_version3/804/25810/25811/25813/25816/m16274/201611/522576.shtml),[移动端文档](http://tgideas.github.io/motion/doc/data/component/mo.Overlay.html)) |
-
+|语法  | 值| 释义 |
+|--------- | --------|
+|{{time}}    |  2017-04-24 | 创建时间 |
+|{{team}}  | cp/tgideas | 创建的团队 |
+|{{author}}  | cp/昵称 | 创建文档的前端重构|
+|{{designAuthor}}  | cp/昵称 |创建文档的设计师，如重构是cp则设计师默认为cp |
+|{{{milo}}}  | `<script src=".."></script>` | milo库，[文档](http://tgideas.qq.com/milo/) |
+|{{{jsLib}}}  | `<script src=".."></script>` | jquery/zepto库 (根据终端类型自动适配) |
+|{{{tab}}}  | `//tab公用模块页面片(包含结构、css、脚本)` | tab组件( [PC端文档](http://tguide.qq.com/main/tab-component.htm),[移动端文档](http://tgideas.github.io/motion/doc/data/component/mo.Tab.html)) |
+|{{{scroll}}}  | `//轮播公用模块页面片(包含结构、css、脚本)` | 轮播组件( [PC端文档](http://tguide.qq.com/main/picscroll-component.htm),[移动端文档](http://tgideas.github.io/motion/doc/data/component/mo.Slide.html)) |
+|{{{login}}}  | `//登录公用模块页面片(包含结构、css、脚本)` | 登录组件( [PC端文档](http://tgideas.qq.com/webplat/info/news_version3/804/25810/25811/25812/25814/m16274/201611/521122.shtml),[移动端文档](http://tgideas.qq.com/webplat/info/news_version3/804/25810/25811/25812/25814/m16274/201611/521122.shtml)) |
+|{{{player}}}  | `//视频公用模块页面片(包含结构、css、脚本)` | 视频组件( [PC端文档](http://tgideas.qq.com/webplat/info/news_version3/804/25810/25811/25812/25814/m16274/201611/522294.shtml),[移动端文档](http://tgideas.qq.com/webplat/info/news_version3/804/25810/25811/25812/25814/m16274/201611/522294.shtml)) |
+|{{{lottery}}}  | `//抽奖模块页面片(包含结构、css、脚本)` | 抽奖组件( [PC端文档](http://tgideas.qq.com/webplat/info/news_version3/804/25810/25811/25812/25814/m16274/201611/521098.shtml),[移动端文档](http://tgideas.qq.com/webplat/info/news_version3/804/25810/25811/25812/25815/m16274/201612/529504.shtml)) |
+|{{{pop}}}  | `//弹窗模块页面片(包含结构、css、脚本)` | 弹窗组件( [PC端文档](http://tgideas.qq.com/webplat/info/news_version3/804/25810/25811/25813/25816/m16274/201611/522576.shtml),[移动端文档](http://tgideas.github.io/motion/doc/data/component/mo.Overlay.html)) |
