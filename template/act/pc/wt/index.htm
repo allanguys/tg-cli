@@ -3,24 +3,75 @@
 <head>
 <meta charset="gbk" />
 <meta name="robots" content="all" />
-<meta name="author" content="Tencent-CP" />
-<meta name="Description" content="腾讯游戏《战争雷霆》（《War Thunder》）下载官方网站。是由是俄罗斯开发商Gaijin Entertainment开发的一款以二战历史为背景的专业载具类战争网游。" />
-<meta name="Keywords" content="战争雷霆,战争雷霆官网,战争雷霆游戏下载,战争雷霆下载,战争雷霆官方下载,WT官网,WT下载,WT官方下载,WT游戏特色,WT特色,WT视频,战争网游,坦克百科,新手指南,飞机射击游戏,坦克射击游戏,战争网游,腾讯战争网游,军事网游,二战题材,MMOTPS,TPS" />
-<!-- 设计：cp  | 重构：cp | 创建：2017/3/20  -->
-<title>战雷飞虎队-战争雷霆官方网站-腾讯游戏</title>{{appName}}
+<meta name="author" content="Tencent-{{team}}" />
+<meta name="Description" content="" />
+<meta name="Keywords" content="" />
+<!-- 设计：{{designAuthor}}  | 重构：{{author}} | 创建：{{time}}  -->
+<title>-官方网站-腾讯游戏</title>
+<!--默认开启内联样式-->
+<style>
+/*reset*/
+body,dl,dd,ul,ol,h1,h2,h3,h4,h5,h6,p,form{margin:0}
+body,button,input,select,textarea{font:12px/1.5 tahoma,'\5b8b\4f53',sans-serif}
+h1,h2,h3,h4,h5,h6{font-size:100%}
+em,b{font-style:normal}
+a{text-decoration:none}
+a:hover{text-decoration:underline}
+img{border:0}
+button,input,select,textarea{font-size:100%;outline:none}
+table{border-collapse:collapse;border-spacing:0}
+td,th,ul,ol{padding:0}
+</style>
+<!--
+外联样式按需使用	
+<style rel="stylesheet" href="ossweb-img/css/comm.css"></style> -->
 </head>
 
 <body>
-{{appType}}
-<script src="//ossweb-img.qq.com/images/js/foot.js"></script>
-<script src="//ossweb-img.qq.com/images/js/milo/milo.js"></script>
-<script src="//ossweb-img.qq.com/images/js/jquery/jquery-1.9.1.min.js"></script>
-<!-- top foot条 -->
-<script src="//game.gtimg.cn/images/zzlt/act/wt_comm/top/wt_top_201610.js"></script>
+
+{{{milo}}}
+
+{{{jsLib}}}
+
+
+{{{tab}}}
+
+
+{{{scroll}}}
+
+
+
+{{{login}}}
+
+
+
+{{{player}}}
+
+
+
+{{{lottery}}}
+
+
+
+{{{pop}}}
+<!--WT通用头部-->
+<script src="http://game.gtimg.cn/images/zzlt/act/wt_comm/top/wt_top_201610.js"></script>
+<!--IEG通用底部-->
+<script src="http://ossweb-img.qq.com/images/js/foot.js"></script>
 <!--通用统计代码-->
-<script src="http://pingjs.qq.com/ping_tcss_ied.js"></script>
+<script src="//ossweb-img.qq.com/images/js/PTT/ping_tcss_tgideas_https_min.js"></script>
 <script src="http://game.gtimg.cn/images/zzlt/web201507/js/gkd.js"></script>
-<script>if(typeof(pgvMain) == 'function')pgvMain();TG_GKD_S('a20170320recruit');</script>
+<script>
+//此段代码不能放到外链JS中，
+var setSite={ //设置网站属性
+ siteType:"{{appName}}", //必填项:"os"代表是官网，如果不是，则填写actName例如a20160701xxx
+ pageType:"index", //必填项:本页面的定位；按照页面含义填写例如main||list||detail||download||share||page1||pageN
+ pageName:"首页", //必填项:页面中文名
+ osact:0, //选填项:是否是官网专题(在官网运营的专题)boolean；默认是0；可以在链接上加入参数osact=1来灵活设置
+ ingame:0, //选填项:是否投放在游戏APP内boolean；默认是0；可以在链接上加入参数ingame=1来灵活设置
+ stayTime:0 //选填项:是否需要统计停留时长boolean；默认是0
+}
+if(typeof(pgvMain)=='function')pgvMain();TG_GKD_S('{{appName}}');//千万不能忘记！
 </script>
 </body>
 </html>
