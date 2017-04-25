@@ -10,6 +10,7 @@ var iconv = require('iconv-lite');
 var ora = require('ora');
 
 var Mustache = require('../lib/mustache');
+var checkVersion = require('../lib/check-version');
 var shelljs = require('shelljs/global');
 var rootPath = __dirname.replace(/(bin)|(lib)/, '');
 var nowPath = process.cwd();
@@ -25,21 +26,16 @@ var package = require(rootPath + '/package.json');
 var configTemp = {};
 var dt = new Date();
 var installGulp = true;
-//初始化config
-function initconfigTemp() {
-	fs.ensureFileSync(nowPath + '\\' + configFile, (err, contents) => {
-		if(err) console.error(err)
-		configTemp = contents;
-	})
-}
 
 program.option('-i, --install [arg]', '安装');
 program.version(package.version);
 program.parse(process.argv);
+
 //安装
 if(program.install) {
 
-	console.log(program.install.length > 0 && program.install[0] == 'pure')
+//检查版本
+ checkVersion(function () {
 	if(program.install.length > 0 && program.install[0] == 'pure') {
 		installGulp = false
 	}
@@ -54,7 +50,7 @@ if(program.install) {
 		nameInit();
 	});
 	configTemp['time'] = dt.getFullYear() + '-' + (dt.getMonth() + 1) + '-' + dt.getDate();
-
+ })
 }
 
 //专题名

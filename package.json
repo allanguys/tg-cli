@@ -1,6 +1,6 @@
 {
   "name": "tg-cli",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "tencent game web project scaffold",
   "main": "index.js",
   "scripts": {
@@ -10,9 +10,9 @@
     "tg": "bin/tg.js"
   },
   "author": "allanguys",
-  "repository" :
-  { "type" : "git",
-    "url" : "https://github.com/allanguys/tg-cli"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/allanguys/tg-cli"
   },
   "license": "ISC",
   "dependencies": {
@@ -35,6 +35,10 @@
     "iconv-lite": "^0.4.15",
     "inquirer": "^3.0.6",
     "ora": "^1.2.0",
+    "request": "^2.81.0",
     "shelljs": "^0.7.7"
+  },
+  "engines": {
+    "node": ">=4.0.0"
   }
 }
