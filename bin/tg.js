@@ -205,8 +205,7 @@ function createTemplate(path, type, terminal) {
 		configTemp['team'] = 'cp'
 	} else {
 		configTemp['team'] = 'Tgideas'
-	}
-
+	};
 	fs.readFile(templatePath + path + '/index.htm', function(err, buffer) {
 		if(err) throw err;
 		var str = iconv.decode(buffer, 'gbk');
