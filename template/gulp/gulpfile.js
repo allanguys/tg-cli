@@ -9,6 +9,8 @@ var replace = require('gulp-replace');
 var iconv = require('gulp-iconv');
 var fs = require('fs');
 var clean = require('gulp-clean');
+var zip = require('gulp-zip');
+var chalk = require('chalk');
 
 var config = {};
 var deps = [];
@@ -69,7 +71,7 @@ for(var i = 0; i < sepPath[0].length; i++) {
 		deps_dev.push('sep' + i + '_dev')
 		//分离DEV
 		gulp.task('sep' + i + '_dev', function() {
-			return gulp.src([sepPath[0][i] + '*.js', sepPath[0][i] + '*.json', sepPath[0][i] + '*.css', sepPath[0][i] + '*.htm', sepPath[0][i] + '*.inc', sepPath[0][i] + '*.html', sepPath[0][i] + '*.shtml',])
+			return gulp.src([sepPath[0][i] + '*.js', sepPath[0][i] + '*.json', sepPath[0][i] + '*.css', sepPath[0][i] + '*.htm', sepPath[0][i] + '*.inc', sepPath[0][i] + '*.html', sepPath[0][i] + '*.shtml','!gulpfile.js', '!package.json','!tg_config.json'])
 				.pipe(iconv({
 					decoding: 'gbk',
 					encoding: 'utf-8'
@@ -83,7 +85,7 @@ for(var i = 0; i < sepPath[0].length; i++) {
 					encoding: 'gbk'
 				}))
 				.pipe(
-					gulp.dest(dirName + '_dev/' + sepPath[1][i])
+					gulp.dest(dirName + '_开发版/' + sepPath[1][i])
 				);
 		});
 	})(i);
@@ -119,8 +121,18 @@ for(var i = 0; i < picPath.length; i++) {
 	})(i);
 };
 gulp.task('default', deps_dev, function() {
-    console.log('专题分离完成：）')
+    console.log('分离完成,目录：'+chalk.green(dirName + '_开发版/'))
 });
 gulp.task('pure', deps, function() {
-    console.log('专题分离完成：）')
+    console.log('专题分离完成,目录：'+chalk.green(dirName + '_分离/'))
+});
+gulp.task('zip',deps, function() {
+	return gulp.src(dirName + '_分离/*')
+	.pipe(zip(dirName+'.zip'))
+	.pipe(gulp.dest('./'))
+	.on('end', function() {
+         console.log('专题分离完成,目录：'+chalk.green( dirName + '_分离/'))
+         console.log('压缩包：'+chalk.green(dirName + '.zip'))
+	});
+
 });
