@@ -121,18 +121,24 @@ for(var i = 0; i < picPath.length; i++) {
 	})(i);
 };
 gulp.task('default', deps_dev, function() {
-    console.log('分离完成,目录：'+chalk.green(dirName + '_开发版/'))
+	console.log('')
+    console.log('   分离完成,目录：'+chalk.green(dirName + '_开发版/'))
+    console.log('')
 });
 gulp.task('pure', deps, function() {
-    console.log('专题分离完成,目录：'+chalk.green(dirName + '_分离/'))
+	console.log('')
+    console.log('   专题分离完成,目录：'+chalk.green(dirName + '_分离/'))
+    console.log('')
 });
 gulp.task('zip',deps, function() {
 	return gulp.src(dirName + '_分离/*')
 	.pipe(zip(dirName+'.zip'))
 	.pipe(gulp.dest('./'))
 	.on('end', function() {
-         console.log('专题分离完成,目录：'+chalk.green( dirName + '_分离/'))
-         console.log('压缩包：'+chalk.green(dirName + '.zip'))
+		 console.log('')
+         console.log('   专题分离完成,目录：'+chalk.green( dirName + '_分离/'))
+         console.log('   压缩包：'+chalk.green(dirName + '.zip'))
+         console.log('')
 	});
 
 });
