@@ -41,15 +41,19 @@ gulp.task('watch', function() {
 		livereload.changed(file.path);
 	});
 });
-
+//在zip和pure task下生成原始文件夹供接口人测试
+gulp.task('souce', function() {
+	return gulp.src(['*.**','*/*.**','!gulpfile.js', '!package.json','!tg_config.json','!node_modules/*','!*.zip','!'+dirName+'*/*.*'])
+	.pipe(gulp.dest(dirName));
+});
+deps.push('souce');
 for(var i = 0; i < sepPath[0].length; i++) {
 
 	(function(i) {
 		deps.push('sep' + i);
 		//分离
 		gulp.task('sep' + i, function() {
-
-			return gulp.src([sepPath[0][i] + '*.js','js/' + dirName + '*/', sepPath[0][i] + '*.css', sepPath[0][i] + '*.htm', sepPath[0][i] + '*.inc', sepPath[0][i] + '*.html', sepPath[0][i] + '*.shtml',sepPath[0][i] + '*.shtml','!gulpfile.js', '!package.json','!tg_config.json'])
+			return gulp.src([sepPath[0][i] + '*.**','!gulpfile.js', '!package.json','!tg_config.json','!node_modules/','!*.zip'])
 				.pipe(iconv({
 					decoding: 'gbk',
 					encoding: 'utf-8'
@@ -71,7 +75,7 @@ for(var i = 0; i < sepPath[0].length; i++) {
 		deps_dev.push('sep' + i + '_dev')
 		//分离DEV
 		gulp.task('sep' + i + '_dev', function() {
-			return gulp.src([sepPath[0][i] + '*.js', sepPath[0][i] + '*.json', sepPath[0][i] + '*.css', sepPath[0][i] + '*.htm', sepPath[0][i] + '*.inc', sepPath[0][i] + '*.html', sepPath[0][i] + '*.shtml','!gulpfile.js', '!package.json','!tg_config.json'])
+			return gulp.src([sepPath[0][i] + '*.**','!gulpfile.js', '!package.json','!tg_config.json','!node_modules/','!*.zip'])
 				.pipe(iconv({
 					decoding: 'gbk',
 					encoding: 'utf-8'
@@ -90,6 +94,13 @@ for(var i = 0; i < sepPath[0].length; i++) {
 		});
 	})(i);
 };
+//copy配置文件
+gulp.task('copyConfig', function() {
+	   
+	 	return gulp.src(['gulpfile.js','package.json','tg_config.json'])
+	 	.pipe(gulp.dest(dirName + '_开发版/'));
+});
+deps_dev.push('copyConfig');
 //图片压缩
 for(var i = 0; i < picPath.length; i++) {
 	(function(i) {
@@ -122,21 +133,21 @@ for(var i = 0; i < picPath.length; i++) {
 };
 gulp.task('default', deps_dev, function() {
 	console.log('')
-    console.log('   分离完成,目录：'+chalk.green(dirName + '_开发版/'))
+    console.log('   分离目录：'+chalk.green(dirName + '_开发版/'))
     console.log('')
 });
 gulp.task('pure', deps, function() {
 	console.log('')
-    console.log('   专题分离完成,目录：'+chalk.green(dirName + '_分离/'))
+    console.log('   分离目录：'+chalk.green(dirName + '_分离/'))
     console.log('')
 });
 gulp.task('zip',deps, function() {
-	return gulp.src(dirName + '_分离/*')
+	return gulp.src([dirName + '_分离/**',])
 	.pipe(zip(dirName+'.zip'))
 	.pipe(gulp.dest('./'))
 	.on('end', function() {
 		 console.log('')
-         console.log('   专题分离完成,目录：'+chalk.green( dirName + '_分离/'))
+         console.log('   分离目录：'+chalk.green( dirName + '_分离/'))
          console.log('   压缩包：'+chalk.green(dirName + '.zip'))
          console.log('')
 	});
