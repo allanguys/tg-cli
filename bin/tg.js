@@ -34,21 +34,7 @@ program.version(package.version);
 program.parse(process.argv);
 
 
-//var fs_readFile = Q.denodeify(fs.readFile)
-//var fs_copy = Q.denodeify(fs.copy)
-//var promise = fs_readFile(rootPath + 'package.json')
-//promise.then(function(data){
-//	console.log(data.toString())
-//}, console.error)
-//fs_copy(rootPath + 'package.json','/').then(function(){
-//	console.log('suc')
-//})
 
-//console.log(nowPath + '/index.htm')
-//fsp.copy(nowPath + '/index.htm',nowPath + '/index.htm1')
-//.then(function(){
-//	console.log('suc')
-//})
 
 //安装
 if(program.install) {
@@ -207,7 +193,7 @@ function addMoudle(type, terminal) {
 		configTemp['scroll'] = iconv.decode(scroll, 'gbk');
 	}
 	//抽奖
-	if(configTemp.module.indexOf('方形抽奖') >= 0) {
+	if(configTemp.module.indexOf('抽奖') >= 0) {
 		var lottery = fs.readFileSync(templatePath + 'module/' + terminal + '/lottery.htm')
 		configTemp['lottery'] = iconv.decode(lottery, 'gbk');
 	}
@@ -267,7 +253,8 @@ function createTemplate(path, type, terminal) {
                     ora(chalk.green('gulp安装成功！')).succeed();
                     console.log('')
                     console.log(chalk.gray('   您的文件路径：') + nowPath + '\\' + configTemp.appName + '\\');
-                     console.log('   进入目录之后即可使用gulp：');
+                     console.log('')
+                     console.log('   使用gulp：');
                     console.log('');
 					console.log('      ' + chalk.green('cd  ') + configTemp.appName);
 					console.log('      ' + chalk.green('npm install'));

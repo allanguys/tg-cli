@@ -5,6 +5,14 @@
 http://tgideas.qq.com/webplat/info/news_version3/804/25810/25811/25812/25814/m16274/201611/521122.shtml
 ====================
 -->
+<!--登录前状态 Start-->
+	<p id="unlogin">亲爱的用户，请 <a href="javascript:;" id="dologin">[登录]</a></p>
+	<!--登录前状态 End-->
+	<!--登录后状态 Start-->
+	<p id="logined" style="display:none">欢迎您，<span id='login_qq_span'></span>，<a href="javascript:;" id="dologout">[注销]</a></p>
+<!--登录后状态 End-->
+<script src="http://ossweb-img.qq.com/images/js/milo/milo-min.js"></script>
+<script src="http://ossweb-img.qq.com/images/js/jquery/jquery-1.9.0.min.js"></script>
 
 <script>
 milo.addEvent(g("dologin"), "click", function() {
