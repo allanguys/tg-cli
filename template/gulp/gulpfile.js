@@ -11,6 +11,7 @@ var fs = require('fs');
 var clean = require('gulp-clean');
 var zip = require('gulp-zip');
 var chalk = require('chalk');
+var cheerio = require('gulp-cheerio');
 
 var config = {};
 var deps = [];
@@ -80,10 +81,33 @@ for(var i = 0; i < sepPath[0].length; i++) {
 					decoding: 'gbk',
 					encoding: 'utf-8'
 				}))
+				//自动补齐seo信息
+				.pipe(cheerio({
+					 run:function ($, file) {
+					 	  var titleText = $('title').text().split("-")[0];
+					      $('a').each(function () {
+					        var a = $(this);
+						    if(a.attr('title') == undefined || a.attr('title') == ''){
+						        a.attr('title',a.text());
+						    }
+					      });
+					      $('img').each(function(){
+					      	var img = $(this);
+					      	if(img.attr('alt') == undefined || img.attr('alt') == ''){
+					      		img.attr('alt',titleText)
+					      	}
+					      })
+				      },
+				      parserOptions: {
+					    decodeEntities: false
+					  }
+                   })
+				)
 				//路径分离
 				.pipe(replace(/(ossweb-img\/)|(..\/ossweb-img\/)/g, sepUrl))
 				//适配https协议
 				.pipe(replace(/http:\/\//g, '\/\/'))
+				
 				.pipe(iconv({
 					decoding: 'utf-8',
 					encoding: 'gbk'

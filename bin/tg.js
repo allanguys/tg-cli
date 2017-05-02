@@ -82,7 +82,7 @@ function authorInit() {
 
 	})
 };
-//作者名
+//设计师
 function designAuthorInit() {
 	inquirer.prompt(installConfig.designAuthor).then(function(args) {
 		assignConfig(args);
@@ -119,7 +119,9 @@ function assignConfig(args, last) {
 }
 
 function createrFn() {
-
+	//强制小写
+    configTemp.gameName = configTemp.gameName.toLocaleLowerCase();
+    configTemp.appName = configTemp.appName.toLocaleLowerCase();
 	//创建文件夹
 	var d = '';
 	if(configTemp.appType == '移动专题') {
@@ -198,12 +200,26 @@ function addMoudle(type, terminal) {
 		configTemp['lottery'] = iconv.decode(lottery, 'gbk');
 	}
 }
+//SEO
+function  seoInfo(){
+	 var m = JSON.parse(fs.readFileSync(templatePath + 'seo/meta.json').toString()).list;
+	 for (g in m) {
+	 	if(m[g].game == configTemp.gameName){
+	 		configTemp['keywords'] = m[g].keywords;
+	 		configTemp['description'] = m[g].description;
+	 		configTemp['gamecn'] = m[g].gamecn;
+	 	}
+	 }
+}
+
 //创建模板
 function createTemplate(path, type, terminal) {
 
 	var tg_config = JSON.stringify(configTemp);
 	//通用模块集成
 	addMoudle(type, terminal)
+    //SEO
+    seoInfo();
 	//作者
 	if(configTemp['author'].toLowerCase() == 'cp') {
 		configTemp['author'] = 'cp'
@@ -253,8 +269,8 @@ function createTemplate(path, type, terminal) {
                     ora(chalk.green('gulp安装成功！')).succeed();
                     console.log('')
                     console.log(chalk.gray('   您的文件路径：') + nowPath + '\\' + configTemp.appName + '\\');
-                     console.log('')
-                     console.log('   使用gulp：');
+                    console.log('')
+                    console.log('   使用gulp：');
                     console.log('');
 					console.log('      ' + chalk.green('cd  ') + configTemp.appName);
 					console.log('      ' + chalk.green('npm install'));
@@ -274,75 +290,10 @@ function createTemplate(path, type, terminal) {
 				console.log('      ' + chalk.green('cd  ') + configTemp.appName);
 				console.log('      ' + chalk.green('npm install'));
 				console.log('      ' + chalk.green('npm install -g gulp'));
-				console.log('');
+				console.log(''); 
 			}
 		}).catch(function(err) {
             console.error(err);
         });
-//		fs.copy(templatePath + path + '/', nowPath + '\\' + configTemp.appName + '/', err => {
-//			if(err) return console.error(err);
-			//生成首页
-//			fs.ensureDir(nowPath + '\\' + configTemp.appName + '', err => {
-//				if(err) return console.error(err);
-//				fs.writeFile(nowPath + '\\' + configTemp.appName + '/index.htm', iconv.encode(M, 'gbk'), function(err) {
-//					if(err) return console.error(err);
-//
-//					//生成配置文件
-//					fs.writeFile(nowPath + '\\' + configTemp.appName + '/tg_config.json', tg_config, function(err) {
-//						if(err) return console.error(err);
-//
-//						fs.copy(templatePath + '/gulp', nowPath + '\\' + configTemp.appName + '/', err => {
-//							spinner.stop();
-//							console.log('')
-//							ora(chalk.green('目录生成成功！')).succeed();
-//							if(installGulp) {
-//								var spinnerInstall = ora('安装依赖').start();
-//								//安装依赖	
-//								exec('npm install --save-dev', {
-//									cwd: nowPath + '\\' + configTemp.appName + ''
-//								}, function(err) {
-//									if(err) {
-//										console.log('安装依赖出错，请检查网络环境或在目录中重试npm install');
-//										console.log('')
-//										console.log(chalk.gray('您的文件目录路径：' + nowPath + '\\' + configTemp.appName + '\\'));
-//									} else {
-//										ora(chalk.green('相关依赖安装成功！')).succeed();
-//										//安装gulp
-//										exec('npm install  gulp -g --save-dev', {
-//											cwd: nowPath + '\\' + configTemp.appName + ''
-//										}, function(err) {
-//											if(err) {
-//												console.log('安装依赖出错，请检查网络环境或在目录中重试npm install');
-//												console.log('')
-//												console.log(chalk.gray('您的文件目录路径：' + nowPath + '\\' + configTemp.appName + '\\'));
-//											} else {
-//												spinnerInstall.stop();
-//												console.log('')
-//												ora(chalk.green('gulp安装成功！')).succeed();
-//												console.log('')
-//												console.log(chalk.gray('您的文件路径：' + nowPath + '\\' + configTemp.appName + '\\'));
-//												console.log(chalk.gray('请愉快的coding吧:)'));
-//											}
-//										});
-//									}
-//								});
-//							} else {
-//								console.log('');
-//								console.log(chalk.gray('您的文件路径：') + chalk.gray(nowPath + '\\' + configTemp.appName + '\\'));
-//								console.log('');
-//								console.log(chalk.gray('您选择没有安装gulp依赖，您可以手动安装依赖：'));
-//								console.log('');
-//								console.log('cd  ' + nowPath + '\\' + configTemp.appName + '\\');
-//								console.log('npm install --save-dev');
-//								console.log('npm install --save-dev -g gulp');
-//							}
-//
-//						});
-//					});
-//				});
-//			});
-//
-//		});
-
 	})
 };
