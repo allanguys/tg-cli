@@ -253,7 +253,9 @@ function createTemplate(path, type, terminal) {
 			ora(chalk.green('目录生成成功！')).succeed();
 			//初始化gulp
 			if(installGulp) {
+				console.log('')
 				var spinnerInstall = ora('安装依赖').start();
+				console.log('')
 				//安装依赖
 				exec('npm install --save-dev', {
 					cwd: nowPath + '\\' + configTemp.appName + ''
