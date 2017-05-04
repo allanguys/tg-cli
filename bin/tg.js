@@ -28,6 +28,7 @@ var package = require(rootPath + '/package.json');
 var configTemp = {};
 var dt = new Date();
 var installGulp = true;
+var npmSource = 'npm';
 
 program.option('-i, --install [arg]', '安装');
 program.version(package.version);
@@ -38,10 +39,13 @@ program.parse(process.argv);
 
 //安装
 if(program.install) {
-
+//是否开启cnpm镜像
+if(program.install.indexOf('cnpm') >=0){
+	npmSource = 'cnpm';
+}
 //检查版本
  checkVersion(function () {
-	if(program.install.length > 0 && program.install[0] == 'pure') {
+	if(program.install.length > 0 && program.install.indexOf('pure') >=0) {
 		installGulp = false
 	}
 	console.log(
@@ -257,12 +261,12 @@ function createTemplate(path, type, terminal) {
 				var spinnerInstall = ora('安装依赖').start();
 				console.log('')
 				//安装依赖
-				exec('npm install --save-dev', {
+				exec(npmSource + ' install --save-dev', {
 					cwd: nowPath + '\\' + configTemp.appName + ''
 				}).then(function(){
 					console.log('')
  					ora(chalk.green('相关依赖安装成功！')).succeed();
-					exec('npm install  gulp -g --save-dev', {
+					exec(npmSource + ' install  gulp -g --save-dev', {
 						cwd: nowPath + '\\' + configTemp.appName + ''
 					})
 				}).then(function(){
@@ -275,8 +279,8 @@ function createTemplate(path, type, terminal) {
                     console.log('   使用gulp：');
                     console.log('');
 					console.log('      ' + chalk.green('cd  ') + configTemp.appName);
-					console.log('      ' + chalk.green('npm install'));
-					console.log('      ' + chalk.green('npm install -g gulp'));
+					console.log('      ' + chalk.green(npmSource + '  install'));
+					console.log('      ' + chalk.green(npmSource + '  install -g gulp'));
 					console.log('');
                     console.log(chalk.gray('  请愉快的coding吧:)'));
 				}).catch(function(err) {
@@ -290,8 +294,8 @@ function createTemplate(path, type, terminal) {
 				console.log(chalk.gray('   您选择没有安装') + 'gulp' +chalk.gray('依赖，稍后安装：'));
 				console.log('');
 				console.log('      ' + chalk.green('cd  ') + configTemp.appName);
-				console.log('      ' + chalk.green('npm install'));
-				console.log('      ' + chalk.green('npm install -g gulp'));
+				console.log('      ' + chalk.green(npmSource + '  install'));
+				console.log('      ' + chalk.green(npmSource + '  install -g gulp'));
 				console.log(''); 
 			}
 		}).catch(function(err) {

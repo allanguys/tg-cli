@@ -23,6 +23,9 @@
 $ npm install -g tg-cli
 ```
 
+**推荐**使用国内镜像安装 [cnpm](https://cnpmjs.org/)
+
+
 ----------
 
 ## 使用
@@ -30,9 +33,14 @@ $ npm install -g tg-cli
 - 安装gulp依赖
 
 ``` bash
-$ tg install
+$ tg install 
 ```
 
+开启`cnpm`镜像：
+
+``` bash
+$ tg install cnpm
+```
 
 - 不安装gulp依赖（只写入相关配置文件）
 
