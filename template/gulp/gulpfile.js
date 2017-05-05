@@ -42,12 +42,7 @@ gulp.task('watch', function() {
 		livereload.changed(file.path);
 	});
 });
-//在zip和pure task下生成原始文件夹供接口人测试
-gulp.task('souce', function() {
-	return gulp.src(['*.**','*/*.**','!gulpfile.js', '!package.json','!tg_config.json','!node_modules/*','!*.zip','!'+dirName+'*/*.*'])
-	.pipe(gulp.dest(dirName));
-});
-deps.push('souce');
+
 for(var i = 0; i < sepPath[0].length; i++) {
 
 	(function(i) {
@@ -155,8 +150,18 @@ for(var i = 0; i < picPath.length; i++) {
 		});
 	})(i);
 };
+
+
+//在zip和pure task下生成原始文件夹供接口人测试
+gulp.task('souce',function() {
+	return gulp.src(['*.**','*/*.**','!gulpfile.js', '!package.json','!tg_config.json','!node_modules/*','!*.zip','!'+dirName+'*/*.*'])
+	.pipe(gulp.dest(dirName + '_未分离/'));
+});
+deps.push('souce');
+deps_dev.push('souce');
 gulp.task('default', deps_dev, function() {
 	console.log('')
+    console.log('   未分离目录：'+chalk.green(dirName + '_未分离/'))
     console.log('   分离目录：'+chalk.green(dirName + '_开发版/'))
     console.log('')
 });
