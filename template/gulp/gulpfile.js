@@ -118,7 +118,7 @@ for(var i = 0; i < sepPath[0].length; i++) {
 					encoding: 'gbk'
 				}))
 				.pipe(
-					gulp.dest(dirName + '_开发版/' + sepPath[1][i])
+					gulp.dest(dirName + '_分离/' + sepPath[1][i])
 				);
 		});
 	})(i);
@@ -127,7 +127,7 @@ for(var i = 0; i < sepPath[0].length; i++) {
 gulp.task('copyConfig', function() {
 	   
 	 	return gulp.src(['gulpfile.js','package.json','tg_config.json'])
-	 	.pipe(gulp.dest(dirName + '_开发版/'));
+	 	.pipe(gulp.dest(dirName + '_分离/'));
 });
 deps_dev.push('copyConfig');
 //图片压缩
@@ -142,7 +142,7 @@ for(var i = 0; i < picPath.length; i++) {
 					interlaced: true,
 					multipass: true
 				}))
-				.pipe(gulp.dest(dirName + '_分离_开发版/ossweb-img'));
+				.pipe(gulp.dest(dirName + '_分离/ossweb-img'));
 		});
 	})(i);;
 	(function(i) {
@@ -156,7 +156,7 @@ for(var i = 0; i < picPath.length; i++) {
 					interlaced: true,
 					multipass: true
 				}))
-				.pipe(gulp.dest(dirName + '_开发版/ossweb-img'));
+				.pipe(gulp.dest(dirName + '_分离/ossweb-img'));
 		});
 	})(i);
 };
@@ -172,7 +172,7 @@ deps_dev.push('souce');
 gulp.task('default', deps_dev, function() {
 	console.log('')
     console.log('   未分离目录：'+chalk.green(dirName + '_未分离/'))
-    console.log('   分离目录：'+chalk.green(dirName + '_开发版/'))
+    console.log('   分离目录：'+chalk.green(dirName + '_分离/'))
     console.log('')
 });
 gulp.task('pure', deps, function() {
@@ -190,5 +190,4 @@ gulp.task('zip',deps, function() {
          console.log('   压缩包：'+chalk.green(dirName + '.zip'))
          console.log('')
 	});
-
 });
