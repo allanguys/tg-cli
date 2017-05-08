@@ -31,6 +31,8 @@ try {
 	config = JSON.parse(config);
 	dirName = config.appName;
 	sepUrl = config.author == "cp" ? '//game.gtimg.cn/images/' + config.gameName + '/cp/' + dirName + '/' : '//game.gtimg.cn/images/' + config.gameName + '/' + dirName + '/';
+	cssUrl = config.author == "cp" ?'href="//'+config.gameName+'.qq.com/cp/'+ dirName + '/css/':'href="//'+config.gameName+'.qq.com/act/'+ dirName + '/css/'
+	jsUrl = config.author == "cp" ?'src="//'+config.gameName+'.qq.com/cp/'+ dirName + '/js/':'src="//'+config.gameName+'.qq.com/act/'+ dirName + '/js/'
 
 } catch(err) {
 	return console.log('读取config_tg.json出错,请检查或咨询allanglwang');
@@ -54,8 +56,12 @@ for(var i = 0; i < sepPath[0].length; i++) {
 					decoding: 'gbk',
 					encoding: 'utf-8'
 				}))
-				//路径分离
+				//图片路径分离
 				.pipe(replace(/(ossweb-img\/)|(..\/ossweb-img\/)/g, sepUrl))
+				//样式路径分离
+				.pipe(replace(/(href="css\/)/g, cssUrl))
+				//脚本路径分离
+				.pipe(replace(/(src="js\/)/g, jsUrl))
 				//适配https协议
 				.pipe(replace(/http:\/\//g, '\/\/'))
 				.pipe(iconv({
@@ -100,6 +106,10 @@ for(var i = 0; i < sepPath[0].length; i++) {
 				)
 				//路径分离
 				.pipe(replace(/(ossweb-img\/)|(..\/ossweb-img\/)/g, sepUrl))
+				//样式路径分离
+				.pipe(replace(/(href="css\/)/g, cssUrl))
+				//脚本路径分离
+				.pipe(replace(/(src="js\/)/g, jsUrl))
 				//适配https协议
 				.pipe(replace(/http:\/\//g, '\/\/'))
 				
@@ -132,7 +142,7 @@ for(var i = 0; i < picPath.length; i++) {
 					interlaced: true,
 					multipass: true
 				}))
-				.pipe(gulp.dest(dirName + '_分离/ossweb-img'));
+				.pipe(gulp.dest(dirName + '_分离_开发版/ossweb-img'));
 		});
 	})(i);;
 	(function(i) {
