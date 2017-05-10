@@ -16,7 +16,7 @@
 >- 自动补齐`img['alt']`/`a['title']`属性
 
 
-![npm](https://nodei.co/npm/tg-cli.png?downloads=true)
+
 
 
 ## 安装
@@ -25,6 +25,8 @@
 ``` bash
 $ npm install -g tg-cli
 ```
+
+![npm](https://nodei.co/npm/tg-cli.png?downloads=true)
 
 **推荐**使用国内镜像安装 [cnpm](https://cnpmjs.org/)
 
