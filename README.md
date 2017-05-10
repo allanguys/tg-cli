@@ -16,6 +16,9 @@
 >- 自动补齐`img['alt']`/`a['title']`属性
 
 
+![npm](https://nodei.co/npm/tg-cli.png?downloads=true)
+
+
 ## 安装
 环境: [Node.js](https://nodejs.org/en/download/) , npm  3.0+、 [Git](https://git-scm.com/).
 
@@ -24,6 +27,7 @@ $ npm install -g tg-cli
 ```
 
 **推荐**使用国内镜像安装 [cnpm](https://cnpmjs.org/)
+
 
 
 ----------
@@ -58,7 +62,7 @@ $ tg install pure
 
 - 配置项目目录
 
-![enter image description here](https://raw.githubusercontent.com/allanguys/tg-cli/master/READEME/ex.jpg)
+![配置项目目录](https://raw.githubusercontent.com/allanguys/tg-cli/master/READEME/ex.jpg)
 
 - 配置完成后将自动在项目目录安装gulp依赖
 

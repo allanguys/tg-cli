@@ -228,7 +228,7 @@ function createTemplate(path, type, terminal) {
 	if(configTemp['author'].toLowerCase() == 'cp') {
 		configTemp['author'] = 'cp'
 		configTemp['team'] = 'cp'
-	} else {
+	}else{
 		configTemp['team'] = 'Tgideas'
 	};
 	fs.readFile(templatePath + path + '/index.htm', function(err, buffer) {
