@@ -265,12 +265,12 @@ function createTemplate(path, type, terminal) {
 					cwd: nowPath + '\\' + configTemp.appName + ''
 				}).then(function(){
 					console.log('')
+					spinnerInstall.stop();
  					ora(chalk.green('相关依赖安装成功！')).succeed();
 					exec(npmSource + ' install  gulp -g --save-dev', {
 						cwd: nowPath + '\\' + configTemp.appName + ''
 					})
 				}).then(function(){
-                    spinnerInstall.stop();
                     console.log('')
                     ora(chalk.green('gulp安装成功！')).succeed();
                     console.log('')
