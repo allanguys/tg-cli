@@ -15,9 +15,9 @@
 >- 压缩图片
 >- 自动补齐`img['alt']`/`a['title']`属性
 
-** 开始使用Tg-cli
+## 开始使用Tg-cli
 
-* **[视频教程](http://zzlt.qq.com/act/tgcli/index.html)**
+* [视频教程](http://zzlt.qq.com/act/tgcli/index.html)
 
 * 使用预览
 
