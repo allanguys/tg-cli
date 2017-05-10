@@ -15,9 +15,11 @@
 >- 压缩图片
 >- 自动补齐`img['alt']`/`a['title']`属性
 
+** 开始使用Tg-cli
 
+* **[视频教程](http://zzlt.qq.com/act/tgcli/index.html)**
 
-
+* 使用预览
 
 ## 安装
 环境: [Node.js](https://nodejs.org/en/download/) , npm  3.0+、 [Git](https://git-scm.com/).
@@ -29,7 +31,6 @@ $ npm install -g tg-cli
 ![npm](https://nodei.co/npm/tg-cli.png?downloads=true)
 
 **推荐**使用国内镜像安装 [cnpm](https://cnpmjs.org/)
-
 
 
 ----------
@@ -95,6 +96,8 @@ $ cd <新建的目录>
 ## 项目即时刷新配置
 
 **1.** 安装chrome 插件: [LiveReload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
+
+`国内镜像:`[LiveReload](http://ossweb-img.qq.com/images/tg-cli/LiveReload_v2.1.0.crx)
 
 **2.** 进入项目开发目录:
 
