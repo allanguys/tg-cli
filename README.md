@@ -41,8 +41,8 @@ $ npm install -g tg-cli
 ## 使用
 
 
-|bash命令  |  作用 |描述 |
-|--------- | --------| --------|
+|bash命令  |  作用 |
+|--------- | --------| 
 | **tg install** |  生成项目目录并用npm安装gulp依赖  | 
 | **tg install cnpm** |  生成项目目录并用cnpm安装gulp依赖  | 
 | **tg install pure** |  生成项目目录不安装gulp依赖  | 
