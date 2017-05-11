@@ -279,6 +279,7 @@ function createTemplate(path, type, terminal) {
                     console.log('   使用gulp：');
                     console.log('');
 					console.log('      ' + chalk.green('cd  ') + configTemp.appName);
+					console.log('      ' + chalk.green('gulp'));
 					console.log('');
                     console.log(chalk.gray('  请愉快的coding吧:)'));
 				}).catch(function(err) {
