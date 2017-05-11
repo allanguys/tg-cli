@@ -40,6 +40,14 @@ $ npm install -g tg-cli
 
 ## 使用
 
+
+|bash命令  |  作用 |描述 |
+|--------- | --------| --------|
+| **tg install  ** |  生成项目目录并用npm安装gulp依赖  | 
+| **tg install cnpm** |  生成项目目录并用cnpm安装gulp依赖  | 
+| **tg install pure** |  生成项目目录不安装gulp依赖  | 
+
+
 - 安装gulp依赖
 
 ``` bash
@@ -71,8 +79,6 @@ $ tg install pure
 ![配置项目目录](https://raw.githubusercontent.com/allanguys/tg-cli/master/READEME/ex.jpg)
 
 - 配置完成后将自动在项目目录安装gulp依赖
-
-
 
 
 
