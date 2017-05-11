@@ -22,7 +22,7 @@
 * 使用预览 
 ![配置项目目录](https://raw.githubusercontent.com/allanguys/tg-cli/master/READEME/0510last.gif)
 
->- Tg-cli是一个刚刚诞生的脚手架工具，还存在很多问题。如果在使用中遇到问题或者希望添加新功能，欢迎积极反馈，每问必答。谢谢。
+>Tg-cli是一个刚刚诞生的脚手架工具，还存在很多问题。如果在使用中遇到问题或者希望添加新功能，欢迎积极反馈，每问必答。谢谢。
 
 ## 安装
 环境: [Node.js](https://nodejs.org/en/download/) , npm  3.0+、 [Git](https://git-scm.com/).
@@ -43,7 +43,7 @@ $ npm install -g tg-cli
 
 |bash命令  |  作用 |描述 |
 |--------- | --------| --------|
-| **tg install  ** |  生成项目目录并用npm安装gulp依赖  | 
+| **tg install** |  生成项目目录并用npm安装gulp依赖  | 
 | **tg install cnpm** |  生成项目目录并用cnpm安装gulp依赖  | 
 | **tg install pure** |  生成项目目录不安装gulp依赖  | 
 
