@@ -2,3 +2,4 @@ node_modules/
 .git
 .project
 .settings/
+* text eol=lf
