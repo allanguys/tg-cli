@@ -44,27 +44,42 @@ if(program.install.indexOf('cnpm') >=0){
 	npmSource = 'cnpm';
 }
 //检查版本
- checkVersion(function () {
-	if(program.install.length > 0 && program.install.indexOf('pure') >=0) {
-		installGulp = false
-	}
-	console.log(
-		chalk.green(
-			figlet.textSync("TG CLI")
-		));
-	//type
-	inquirer.prompt(installConfig.type).then(function(args) {
-		assignConfig(args)
-		//name
-		nameInit();
-	});
+checkVersion(function () {
 	configTemp['time'] = dt.getFullYear() + '-' + (dt.getMonth() + 1) + '-' + dt.getDate();
+
+	console.log(
+	chalk.green(
+		figlet.textSync("TG CLI")
+	));
+	//快捷安装
+	if(program.install.length > 0 ){
+		installGulp = false
+	   if(program.install.indexOf('pure') >=0){
+	   	 installNor();
+	   }else{
+		console.log(program.install)
+		var args = { appName: program.install[0] }
+		assignConfig(args, true);
+	   }
+	}else{
+
+	}
+    //初始化常规安装
+    function installNor(){
+		inquirer.prompt(installConfig.type).then(function(args) {
+			assignConfig(args)
+			//name
+			nameInit();
+		});
+    }
+	
  })
 }
 
 //专题名
 function nameInit() {
 	inquirer.prompt(installConfig.nameInit).then(function(args) {
+		console.log(args)
 		assignConfig(args);
 		//作者名
 		authorInit()
@@ -124,7 +139,9 @@ function assignConfig(args, last) {
 
 function createrFn() {
 	//强制小写
-    configTemp.gameName = configTemp.gameName.toLocaleLowerCase();
+	if(!configTemp.gameName == undefined){
+		configTemp.gameName = configTemp.gameName.toLocaleLowerCase();
+	}
     configTemp.appName = configTemp.appName.toLocaleLowerCase();
 	//创建文件夹
 	var d = '';
@@ -143,7 +160,8 @@ function createrFn() {
 			//生成模板
 			createTemplate(path, type, terminal)
 		}
-	} else if(configTemp.appType == 'PC专题') {
+	} else{
+	//} else if(configTemp.appType == 'PC专题') {
 		var type = 'act';
 		var terminal = 'pc';
 		var path = '';
@@ -163,6 +181,7 @@ function createrFn() {
 }
 //公用模块
 function addMoudle(type, terminal) {
+	if(configTemp.module == undefined) return
 	//milo
 	if(configTemp.module.length > 0) {
 		var milo = fs.readFileSync(templatePath + 'module/' + terminal + '/milo.htm');
@@ -225,12 +244,15 @@ function createTemplate(path, type, terminal) {
     //SEO
     seoInfo();
 	//作者
-	if(configTemp['author'].toLowerCase() == 'cp') {
-		configTemp['author'] = 'cp'
-		configTemp['team'] = 'cp'
-	}else{
-		configTemp['team'] = 'Tgideas'
-	};
+	if(configTemp.author != undefined){
+		if(configTemp['author'].toLowerCase() == 'cp') {
+			configTemp['author'] = 'cp'
+			configTemp['team'] = 'cp'
+		}else{
+			configTemp['team'] = 'Tgideas'
+		};
+	}
+
 	fs.readFile(templatePath + path + '/index.htm', function(err, buffer) {
 		if(err) throw err;
 		var str = iconv.decode(buffer, 'gbk');

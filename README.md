@@ -43,6 +43,7 @@ $ npm install -g tg-cli
 
 |bash命令  |  作用 |
 |--------- | --------| 
+| **tg install <自定义专题名>** |  将直接生成PC专题框架，例如 `tg install a20170525test`将生成目录名为a20170525test的PC专题目录 | 
 | **tg install** |  生成项目目录并用npm安装gulp依赖  | 
 | **tg install cnpm** |  生成项目目录并用cnpm安装gulp依赖  | 
 | **tg install pure** |  生成项目目录不安装gulp依赖  | 
