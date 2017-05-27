@@ -181,6 +181,9 @@ function createrFn() {
 }
 //公用模块
 function addMoudle(type, terminal) {
+	//jsLib
+	var jsLib = fs.readFileSync(templatePath + 'module/' + terminal + '/jslib.htm')
+	configTemp['jsLib'] = iconv.decode(jsLib, 'gbk');
 	if(configTemp.module == undefined) return
 	//milo
 	if(configTemp.module.length > 0) {
@@ -198,9 +201,7 @@ function addMoudle(type, terminal) {
 		var pop = fs.readFileSync(templatePath + 'module/' + terminal + '/pop.htm');
 		configTemp['pop'] = iconv.decode(pop, 'gbk');
 	}
-	//jsLib
-	var jsLib = fs.readFileSync(templatePath + 'module/' + terminal + '/jslib.htm')
-	configTemp['jsLib'] = iconv.decode(jsLib, 'gbk');
+
 
 	//视频
 	if(configTemp.module.indexOf('视频') >= 0) {
