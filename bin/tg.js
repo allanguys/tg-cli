@@ -27,53 +27,55 @@ var package = require(rootPath + '/package.json');
 //temp
 var configTemp = {};
 var dt = new Date();
-var installGulp = true;
+var installGulp = false;
 var npmSource = 'npm';
 
-program.option('-i, --install [arg]', '安装');
-program.version(package.version);
-program.parse(process.argv);
-
-
-
-
-//安装
-if(program.install) {
-//是否开启cnpm镜像
-if(program.install.indexOf('cnpm') >=0){
-	npmSource = 'cnpm';
+function printHelp() {
+	console.log('  Examples:');
+  console.log('');
+  console.log('    交互式创建项目：')
+  console.log('    tg');
+  console.log('');
+  console.log('    快捷方式创建项目：')
+  console.log('    tg -g cf -d a20170406newbie');
+  console.log('');
 }
-//检查版本
-checkVersion(function () {
-	configTemp['time'] = dt.getFullYear() + '-' + (dt.getMonth() + 1) + '-' + dt.getDate();
 
-	console.log(
-	chalk.green(
-		figlet.textSync("TG CLI")
-	));
-	//快捷安装
-	if(program.install.length > 0 ){
-		installGulp = false
-	   if(program.install.indexOf('pure') >=0){
-	   	 installNor();
-	   }else{
-		console.log(program.install)
-		var args = { appName: program.install[0] }
-		assignConfig(args, true);
-	   }
-	}else{
+program.version(package.version)
+  .usage('[options]')
+  .option('-g --game <game>', '指定游戏域名前缀，例如"cf"、"dnf"、"lol"等', /^[a-z0-9][a-z0-9\-]*[a-z0-9]+$/)
+  .option('-d --dir <dir>', '指定需求目录名，格式为"a+日期+名称"，例如"a20170601test"', /^a\d{8}[a-z]+$/);
 
+program.on('--help', printHelp);
+program.parse(process.argv);
+if(program.game || program.dir ) {
+	if(!program.game) {
+		console.log("必须指定游戏域名前缀。\n");
+		printHelp();
+		process.exit(1);
 	}
-    //初始化常规安装
-    function installNor(){
+
+	if(!program.dir) {
+		console.log("必须指定需求目录名称。\n");
+		printHelp();
+		process.exit(1);
+	}
+	assignConfig({ gameName: program.game, appName: program.dir}, true);
+} else {
+	//检查版本
+	checkVersion(function () {
+		configTemp['time'] = dt.getFullYear() + '-' + (dt.getMonth() + 1) + '-' + dt.getDate();
+
+		console.log(
+		  chalk.green(
+			  figlet.textSync("TG CLI")
+		));
 		inquirer.prompt(installConfig.type).then(function(args) {
 			assignConfig(args)
 			//name
 			nameInit();
 		});
-    }
-	
- })
+	});
 }
 
 //专题名
@@ -260,13 +262,13 @@ function createTemplate(path, type, terminal) {
 
 		var M = Mustache.render(str, configTemp);
 		var spinner = ora('   正在生成...').start();
-		//复制模板目录			
+		//复制模板目录
 		fsp.copy(templatePath + path + '/', nowPath + '\\' + configTemp.appName + '/')
 		.then(function(){
 			//生成首页
 			return fsp.ensureDir(nowPath + '\\' + configTemp.appName + '')
 		}).then(function(){
-			//写入文件	
+			//写入文件
 			return fsp.writeFile(nowPath + '\\' + configTemp.appName + '/index.htm', iconv.encode(M, 'gbk'));
 		}).then(function(){
 			//生成配置文件
@@ -284,13 +286,13 @@ function createTemplate(path, type, terminal) {
 				var spinnerInstall = ora('安装依赖').start();
 				console.log('')
 				//安装依赖
-				exec(npmSource + ' install --save-dev', {
+				exec(npmSource + ' install', {
 					cwd: nowPath + '\\' + configTemp.appName + ''
 				}).then(function(){
 					console.log('')
 					spinnerInstall.stop();
  					ora(chalk.green('相关依赖安装成功！')).succeed();
-					exec(npmSource + ' install  gulp -g --save-dev', {
+					exec(npmSource + ' install -g gulp', {
 						cwd: nowPath + '\\' + configTemp.appName + ''
 					})
 				}).then(function(){
@@ -308,17 +310,18 @@ function createTemplate(path, type, terminal) {
 				}).catch(function(err) {
 		            console.error(err);
 		        });
-		    //默认不初始化gulp   
+		    //默认不初始化gulp
 			}else{
 				console.log('');
 				console.log(chalk.gray('   您的文件路径：') + nowPath + '\\' + configTemp.appName + '\\');
 				console.log('');
-				console.log(chalk.gray('   您选择没有安装') + 'gulp' +chalk.gray('依赖，稍后安装：'));
+				console.log(chalk.gray('   接下来，请执行：'));
 				console.log('');
-				console.log('      ' + chalk.green('cd  ') + configTemp.appName);
-				console.log('      ' + chalk.green(npmSource + '  install'));
-				console.log('      ' + chalk.green(npmSource + '  install -g gulp'));
-				console.log(''); 
+				console.log('      ' + chalk.green('cd ') + configTemp.appName);
+				console.log('      ' + chalk.green(npmSource + ' install'));
+				console.log('      ' + chalk.green(npmSource + ' run dev'));
+				console.log('');
+				console.log(chalk.gray('   请愉快地coding吧:)'));
 			}
 		}).catch(function(err) {
             console.error(err);

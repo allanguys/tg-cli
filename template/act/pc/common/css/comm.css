@@ -8,6 +8,6 @@ img{border:0}
 button,input,select,textarea{font-size:100%;outline:none}
 table{border-collapse:collapse;border-spacing:0}
 td,th,ul,ol{padding:0}
-/*æ¸…é™¤æµ®åŠ¨*/
+/*Çå³ý¸¡¶¯*/
 .clearfix:after{content:"200B"; display:block; height:0; clear:both; }
-.clearfix{ *zoom:1; }.
+.clearfix{ *zoom:1; }

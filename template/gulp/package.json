@@ -2,9 +2,12 @@
   "name": "iegact",
   "version": "1.0.0",
   "description": "build for ieg act ",
+  "repository": "allanguys/tg-cli",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "./node_modules/.bin/gulp watch",
+    "build": "./node_modules/.bin/gulp pure",
+    "zip": "./node_modules/.bin/gulp zip"
   },
   "author": "allanglwang",
   "license": "ISC",
@@ -15,8 +18,8 @@
     "gulp-clean": "^0.3.2",
     "gulp-iconv": "0.0.1",
     "gulp-imagemin": "^3.2.0",
-    "gulp-livereload": "^3.8.1",
     "gulp-replace": "^0.5.4",
+    "gulp-server-livereload": "^1.9.2",
     "gulp-zip": "^4.0.0"
   }
 }
