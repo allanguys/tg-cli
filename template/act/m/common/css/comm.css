@@ -1,3 +1,4 @@
+@charset "GBK";
 /*Çå³ý¸¡¶¯*/
 .clearfix:after{content:"200B"; display:block; height:0; clear:both; }
 .clearfix{ *zoom:1; }
