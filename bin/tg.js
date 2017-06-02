@@ -81,7 +81,6 @@ if(program.game || program.dir ) {
 //专题名
 function nameInit() {
 	inquirer.prompt(installConfig.nameInit).then(function(args) {
-		console.log(args)
 		assignConfig(args);
 		//作者名
 		authorInit()
