@@ -1,0 +1,42 @@
+<!--
+====================
+@移动端抽奖
+@文档地址：
+http://tgideas.qq.com/webplat/info/news_version3/804/25810/25811/25812/25815/m16274/201612/529504.shtml
+====================
+-->
+<style>
+.panel{height:285px;margin:0 auto;position:relative;overflow:hidden;}
+.panel .panel-face{background-image:url(//game.gtimg.cn/images/js/loteryround/ossweb-img/face.png);background-size:cover;width:232px;height:232px;position:absolute;left:42px;}
+.panel .panel-btn{width:90px;height:106px;position:absolute;top:64px;left:115px;background-image:url(//game.gtimg.cn/images/js/loteryround/ossweb-img/btn.png);background-size:cover;}
+.panel.playing .panel-btn{-webkit-transform:scale(0.9);transform:scale(0.9);}
+</style>
+</head>
+<body>
+
+<div id="ltpanel" class="panel"></div>
+<script src="//game.gtimg.cn/images/js/loteryround/ossweb-img/loteryround.min.js"></script>
+<script>
+// 转盘初始化
+// 第一个参数是奖品的个数
+// 第二个是用来旋转的圆盘（指针不动）
+var panel=new PanelLotery({
+    length:8,
+    el:'#ltpanel'
+});
+
+$('.panel-btn').on('click', function(event) {
+    event.preventDefault();
+    if(panel.playing) return;
+    // 演示用，随机转到奖品n
+    // 初始的指针右侧开始
+    // 顺时针方向开始算
+    // 第一个奖品是n=0
+    var n=Math.floor(Math.random()*8);
+    console.log(n);
+    panel.playto(n,function(){
+        alert(n);
+    });
+});
+
+</script>
