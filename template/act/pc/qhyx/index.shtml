@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+ <meta charset="gbk">
+ <meta name="robots" content="all">
+ <meta name="author" content="Tencent-{{team}}" />
+ <meta name="Copyright" content="Tencent">
+ <meta name="Description" content="《枪火游侠》是一款由Hi-Rez公司开发的美式漫画风格的第一人称英雄射击游戏，它主打团队配合、技能配合以及快节奏的射击对抗，为玩家提供爽快的游戏体验。" />
+ <meta name="Keywords" content="枪火游侠,枪火游侠官方网站,枪火游侠国服,枪火游侠国服二测,枪火游侠国服首测,枪火游侠首测激活码,枪火游侠激活码,枪火游侠下载,paladins,paladins国服,paladins激活码,paladins官网,paladins下载,英雄射击网游,paladins官方网站" />
+ <title>枪火游侠专题示例 - 枪火游侠官方网站-腾讯游戏</title>
+ <!-- 设计：{{designAuthor}}  | 重构：{{author}} | 创建：{{time}}  -->
+ <style>
+  body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{-webkit-text-size-adjust: none;margin:0;padding:0;}body,button,input,select,textarea{font:12px/1.5 tahoma,arial,\5b8b\4f53,sans-serif;}h1,h2,h3,h4,h5,h6{font-size:100%;}address,cite,dfn,em,var{font-style:normal;}code,kbd,pre,samp{font-family:courier new,courier,monospace;}small{font-size:12px;}ul,ol{list-style:none;}a{text-decoration:none;outline:0 none}a:hover{text-decoration:underline;}sup{vertical-align:text-top;}sub{vertical-align:text-bottom;}legend{color:#000;}fieldset,img{border:0;}button,input,select,textarea{font-size:100%;resize: none;}table{border-collapse:collapse;border-spacing:0;}
+  .fix:after{content:'\20';display:block;height:0;clear:both;font-family:\5FAE\8F6F\96C5\9ED1;}
+  .fix{*zoom:1;}
+ </style>
+</head>
+
+<body>
+<!--
+外联样式按需使用
+<style rel="stylesheet" href="ossweb-img/css/comm.css"></style> -->
+<!--页面包裹层-->
+<div id="qhyx_container">
+  所有页面元素放在 #qhyx_container 内，分离规则请按照通用规范分离
+ <!--IEG通用头部-->
+ <script src="http://qhyx.qq.com/web201707/top/qhyx_top_2017.js"></script>
+ <!--通用底部去掉 id "light_app_ad" 则为深色APP广告-->
+ <script type="text/javascript" src="http://qhyx.qq.com/web201707/footer/foot.js" id="light_app_ad"></script>
+</div>
+<!--页面包裹层END-->
+
+<!--专题通用头部-->
+<!--<script src="//ossweb-img.qq.com/images/js/igt/ossweb-img/igt.js" top-distance="42" id="igt" charset="gb2312"></script>-->
+
+{{{milo}}}
+
+{{{jsLib}}}
+
+
+{{{tab}}}
+
+
+{{{scroll}}}
+
+
+
+{{{login}}}
+
+
+
+{{{player}}}
+
+
+
+{{{lottery}}}
+
+
+
+{{{pop}}}
+<!--统计-->
+<script src="http://ossweb-img.qq.com/images/js/PTT/ping_tcss_tgideas_https_min.js"></script>
+<script>
+ //此段代码不能放到外链JS中，
+ var setSite={ //设置网站属性
+  siteType:"{{appName}}", //必填项:"os"代表是官网，如果不是，则填写actName例如a20160701xxx
+  pageType:"index", //必填项:本页面的定位；按照页面含义填写例如main||list||detail||download||share||page1||pageN
+  pageName:"首页", //必填项:页面中文名
+  osact:0, //选填项:是否是官网专题(在官网运营的专题)boolean；默认是0；可以在链接上加入参数osact=1来灵活设置
+  ingame:0, //选填项:是否投放在游戏APP内boolean；默认是0；可以在链接上加入参数ingame=1来灵活设置
+  stayTime:0 //选填项:是否需要统计停留时长boolean；默认是0
+ }
+ if(typeof(pgvMain)=='function')pgvMain();//千万不能忘记！
+</script>
+</body>
+
+</html>
+

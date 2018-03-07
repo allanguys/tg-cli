@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta name="robots" content="all" />
+<meta name="author" content="Tencent-CP" />
+<meta name="Description" content="" />
+<meta name="Keywords" content="" />
+<title>弹出层模版-腾讯游戏</title>
+<style>
+/* reset */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+table{border-collapse:collapse;border-spacing:0}
+address,caption,cite,code,dfn,em,strong,var{font-weight:normal;font-style:normal}
+ol,ul{list-style:none}
+h1,h2,h3,h4,h5,h6{font-weight:normal;font-size:100%}
+q:before,q:after{content:''}
+fieldset,img,abbr,acronym{border:0}
+
+body{background-color:#f5f8ff; font-family:Microsoft Yahei; text-align:center;}
+.wap{width:800px;float:left; padding:20px;}
+.info h1{ font-size:30px; color:#000; line-height:30px; font-weight:bold;}
+.info h2{ font-size:18px; color:#fff; line-height:30px; text-align:left; background-color:#333; padding:5px 10px; margin-top:20px;}
+.info ul{ font-size:14px; color:#333; border:#999 1px dotted; background-color:#ececec; line-height:18px; text-align:left; margin-top:10px; padding:10px;}
+body .act_pop{margin:20px auto;}
+/*公共弹窗*/
+.act_pop{width:546px;background-color:#f2f2f2;position:relative;border:3px solid #1CACC1; text-align:center; font-size:14px; color:#011c31;}
+.act_pop .act_pop_sprite{background-image:url(http://game.gtimg.cn/images/qhyx/act/a20170926qhyx/qhyx_pop_bg.png); background-repeat:no-repeat;}
+.act_pop .act_pop_none{ display:none;}.act_pop .act_pop_orange{ color:#ff6c00;}.act_pop .text_c{ text-align:center;}.act_pop .font_s12{ font-size:12px;}.act_pop .font_s24{ font-size:24px;}
+.act_pop h2{background-color:#1CACC1; color: #fff; background-position:-560px 900px;font-size:24px;line-height:46px; text-align:left; text-indent:15px;}
+.act_pop p{ margin:15px 0;text-align:left; line-height:24px;}
+.act_pop a:link,.act_pop a:visited{ color:#ab5a22; text-decoration:none;}.act_pop a:hover,.act_pop a:active{ color:#fe6800; text-decoration:underline;}
+.act_pop .act_pop_close{width:46px;height:46px;right:0px;top:0px;position:absolute;background-position:-410px 8px; }
+.act_pop .act_pop_main{ padding:20px;}
+.act_pop .text_wb{ border:1px solid #d2d2d2; background-color:#FFF; padding:5px;}
+.act_pop .act_pop_btn{ margin:20px 10px 10px 10px; display:inline-block; width:120px; height:40px; line-height:40px; background-position:-169px 0;}
+.act_pop .act_pop_btn2{width:160px;background-position:0 0;}
+.act_pop a.act_pop_btn:link,.act_pop a.act_pop_btn:visited,.act_pop .cdkey a:link,.act_pop .cdkey a:visited{ color:#fff;}.act_pop a.act_pop_btn:hover,.act_pop a.act_pop_btn:active,.act_pop .cdkey a:hover,.act_pop .cdkey a:active{ color:#fcc78b; text-decoration:none;}
+
+.act_pop .act_pop_table{ width:100%; font-size:12px; line-height:24px;}
+.act_pop .act_pop_table th{ color:#6f6f6f; background-color:#d7d7d7; height:38px;line-height:38px; font-size: 16px; font-weight: normal;}
+.act_pop .act_pop_table td{background-color:#fff; color: #8c8c8c; height:24px;padding: 8px 2px;}.act_pop .act_pop_table tfoot span,.act_pop .act_pop_table tfoot a{ display:inline-block; margin:0 5px;}
+
+.act_pop .cdkey span{ display:inline-block; color: #8c8c8c; width:260px;height:36px; border:1px solid #d2d2d2; background-color:#FFF; line-height:36px; padding:0 5px; font-size:20px;vertical-align:middle;}
+.act_pop .cdkey a{display:inline-block; width:60px;height:38px; background-position:-50px 0; line-height:38px; padding:0 5px; vertical-align:middle;}
+.act_pop .adr{border-collapse:collapse;width:80%; margin:0 auto;}
+.act_pop .adr td{color:#472f2f;height:22px; padding:5px; text-align:left;}.act_pop .adr input,.act_pop .adr textarea{ background-color:#FFF; border:#d2d2d2 1px solid; height:32px; line-height: 32px; text-align:left; color:#8c8c8c; text-indent: 5px; font-size: 14px; width:260px;}.act_pop .adr textarea{ height:66px;}
+.act_pop .adr .ta-r{ text-align:right;}
+</style>
+</head>
+
+<body>
+<div class="wap">
+<div class="info">
+<h1>枪火游侠弹出层模板</h1>
+<h2>No1.提示信息</h2>
+<ul>
+	<li>适用：信息结构简单的弹出层</li>
+	<li>结构：标题+文字+按钮</li>
+</ul>
+</div>
+<div class="act_pop">
+	<a href="javascript:showDialog.hide();" title="关闭" class="act_pop_close act_pop_sprite"><span class="act_pop_none">关闭</span></a>
+	<h2 class="act_pop_sprite">兑换结果</h2>
+    <div class="act_pop_main">
+    	<p class="text_c">恭喜您！成功兑换了<span class="act_pop_orange">XX</span>！请登录游戏个人仓库进行查收。</p>
+    	<a href="#" title="分享到微博" class="act_pop_btn act_pop_sprite">分享到微博</a>
+    </div>    
+</div>
+<div class="info">
+<h2>No2.微博转发</h2>
+<ul>
+	<li>适用：转发微博</li>
+	<li>结构：标题+文字+按钮</li>
+</ul>
+</div><div class="act_pop">
+	<a href="javascript:showDialog.hide();" title="关闭" class="act_pop_close act_pop_sprite"><span class="act_pop_none">关闭</span></a>
+	<h2 class="act_pop_sprite">转发微博</h2>
+    <div class="act_pop_main">
+    	<p class="text_wb">我参加了《战争前线》12月21日<span class="act_pop_orange">#世界末日#</span>的竞猜投票，12月21日后将迎接一场世界新纪元的开始还是#战争前线#普天同庆日？让我们一起期待！投票就有圣诞礼物、金币礼包等拿~ (+活动链接)</p>
+    	<a href="#" title="返回" class="act_pop_btn act_pop_btn2 act_pop_sprite">领取并分享到微博</a>
+    </div>
+    
+</div><div class="info">
+<h2>No3.CDKYE</h2>
+<ul>
+	<li>适用：领取CDKYE</li>
+	<li>结构：标题+CDKYE+按钮</li>
+</ul>
+</div><div class="act_pop">
+	<a href="javascript:showDialog.hide();" title="关闭" class="act_pop_close act_pop_sprite"><span class="act_pop_none">关闭</span></a>
+	<h2 class="act_pop_sprite">获取CDKEY</h2>
+    <div class="act_pop_main">
+		<p class="text_c font_s24">恭喜您获得战争雷霆内测资格！</p>
+    	<div class="cdkey"><span>YUIHBFYUGO6786GG</span><a href="#" title="复制" class="act_pop_copy act_pop_sprite">复制</a></div>
+    	<a href="#" title="立即兑换" class="act_pop_btn act_pop_sprite">立即兑换</a>
+    </div>
+    
+</div>
+<div class="info">
+<h2>No4.表格</h2>
+<ul>
+	<li>适用：表格类信息</li>
+	<li>结构：标题+文字+表格+按钮</li>
+</ul>
+</div>
+<!-- 查询领取记录开始 -->
+<div class="act_pop">
+	<a href="javascript:showDialog.hide();" title="关闭" class="act_pop_close act_pop_sprite"><span class="act_pop_none">关闭</span></a>
+	<h2 class="act_pop_sprite">我的礼包记录</h2>
+	<div class="act_pop_main">
+		<table class="act_pop_table">
+			<thead>
+			<tr>				
+				<th>获奖大区</th>
+				<th>所获礼包</th>
+				<th>获奖时间</th>
+			</tr>
+			</thead>
+			<tbody>
+				<tr>					
+					<td>电信一区</td>
+					<td>狙击枪大礼包</td>
+					<td>2013-03-05</td>
+				</tr>
+				<tr>					
+					<td>电信一区</td>
+					<td>狙击枪大礼包</td>
+					<td>2013-03-05</td>
+				</tr>
+				<tr>					
+					<td>电信一区</td>
+					<td>狙击枪大礼包</td>
+					<td>2013-03-05</td>
+				</tr>
+				<tr>					
+					<td>电信一区</td>
+					<td>狙击枪大礼包</td>
+					<td>2013-03-05</td>
+				</tr>
+				<tr>					
+					<td>电信一区</td>
+					<td>狙击枪大礼包</td>
+					<td>2013-03-05</td>
+				</tr>
+				<tr>
+					<td colspan="3">您尚未获得任何礼包</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+				<td colspan="3" > <span>1/1页</span> <a title="#" class="pageprenone" href="#">上一页</a><a title="#" class="pagenextnone" href="#">下一页</a></td>
+				</tr>
+			</tfoot>
+		</table>
+        <p><b>温馨提示</b>：虚拟道具奖品将在24小时内发到您的游戏内仓库，请耐心等候，谢谢您的理解与支持！</p>
+		</div>
+</div>
+<div class="info">
+<h2>No5.表单</h2>
+<ul>
+	<li>适用：填写表单类功能</li>
+	<li>结构：标题+文字+表单+按钮</li>
+</ul>
+</div>
+<!-- 查询领取记录开始 -->
+<div class="act_pop">
+	<a href="javascript:showDialog.hide();" title="关闭" class="act_pop_close act_pop_sprite"><span class="act_pop_none">关闭</span></a>
+	<h2 class="act_pop_sprite">我的礼包记录</h2>
+	<div class="act_pop_main">		
+        <p class="font_s12 text_c"><b>温馨提示</b>：为保证实物奖励能准确邮寄，下面所有项目务必详细填写！<br/><span class="act_pop_orange">未获得实物奖励请勿填写</span></p>
+		<table class="adr">
+				<tr>
+                	<td class="ta-r" width="100">姓名：</td>
+                	<td><input class="ipt1" type="text" name="sName" id="sName"></td>
+                </tr>
+            	<tr>
+                	<td class="ta-r">身份证号码：</td>
+                	<td><input class="ipt2" type="text" name="sIdentity" id="sIdentity"></td>
+                </tr>
+            	<tr>
+                	<td class="ta-r">手机号码：</td>
+                	<td><input class="ipt1" type="text" name="sMobile" id="sMobile"></td>
+                </tr>
+            	<tr>
+                	<td class="ta-r">所在城市：</td>
+                	<td><select name="sProvince" id="province" ></select> 省 <select name="sCity" id="city"></select> 市</td>
+                </tr>
+            	<tr>
+                	<td class="ta-r">详细地址：</td>
+                	<td><textarea name="sAddress" rows="3" class="ipt2" id="sAddress"></textarea></td>
+                </tr>
+            	<tr>
+                	<td class="ta-r">邮编：</td>
+                	<td><input class="ipt1" type="text" name="sPostCode" id="sPostCode"></td>
+                </tr>
+			</table>
+			<a href="#" title="提交" class="act_pop_btn act_pop_sprite">提交</a>
+		</div>
+</div>
+</div>
+</body>
+</html>
