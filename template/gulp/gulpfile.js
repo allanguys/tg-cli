@@ -223,6 +223,7 @@ gulp.task('pure', deps, function() {
     console.log('   分离目录：'+chalk.green(build_path))
     console.log('')
 });
+deps_dev.unshift('页面规范验证');
 deps.unshift('页面规范验证');
 gulp.task('页面规范验证',function(){
     return new Promise(function(resolve){
