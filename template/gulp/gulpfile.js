@@ -14,6 +14,7 @@ var chalk = require('chalk');
 var cheerio = require('gulp-cheerio');
 var iconv = require('gulp-iconv');
 var iconvLite = require('iconv-lite');
+var tgtest = require('tgt-pkg');
 var config = {};
 var deps = [];
 var deps_dev = [];
@@ -21,6 +22,7 @@ var sepPath = [];
 var picPath = [];
 var build_path;
 var has = false;
+
 //分离路径
 	sepPath = [
 		['**','css/**/*','js/**/*','inc/**/*', 'ossweb-img/**/*'],
@@ -83,6 +85,9 @@ gulp.task('watch', function() {
           open: true,
       }));
 });
+
+
+
 
 for(var i = 0; i < sepPath[0].length; i++) {
 
@@ -151,7 +156,7 @@ for(var i = 0; i < sepPath[0].length; i++) {
 				.pipe(replace(/(src="js\/)/g, jsUrl))
 				//适配https协议
 				.pipe(replace(/http:\/\//g, '\/\/'))
-				
+
 				.pipe(iconv({
 					decoding: 'utf-8',
 					encoding: 'gbk'
@@ -164,7 +169,7 @@ for(var i = 0; i < sepPath[0].length; i++) {
 };
 //copy配置文件
 gulp.task('copyConfig', function() {
-	   
+
 	 	return gulp.src(['gulpfile.js','package.json','tg_config.json'])
 	 	.pipe(gulp.dest(build_path));
 });
@@ -172,8 +177,8 @@ deps_dev.push('copyConfig');
 //图片压缩
 for(var i = 0; i < picPath.length; i++) {
 	(function(i) {
-		deps.push('imagemin');
-		gulp.task('imagemin', function() {
+		deps.push('图片压缩');
+		gulp.task('图片压缩', function() {
 			return gulp.src([picPath[i] + '*.jpg', picPath[i] + '*.gif', picPath[i] + '*.png', picPath[i] + '*.svg'])
 				.pipe(imagemin({
 					optimizationLevel: 5,
@@ -183,9 +188,9 @@ for(var i = 0; i < picPath.length; i++) {
 				}))
 				.pipe(gulp.dest(build_path + 'ossweb-img'));
 		});
-	})(i);;
+	})(i);
 	(function(i) {
-		var m = 'imagemin_dev';
+		var m = '图片压缩_dev';
 		deps_dev.push(m);
 		gulp.task(m, function() {
 			return gulp.src([picPath[i] + '*.jpg', picPath[i] + '*.gif', picPath[i] + '*.png', picPath[i] + '*.svg'])
@@ -209,7 +214,6 @@ for(var i = 0; i < picPath.length; i++) {
 //deps.push('source');
 //deps_dev.push('source');
 gulp.task('default', deps_dev, function() {
-	console.log('')
 //    console.log('   未分离目录：'+chalk.green(dirName + '_未分离/'))
     console.log('   分离目录：'+chalk.green(build_path))
     console.log('')
@@ -219,6 +223,43 @@ gulp.task('pure', deps, function() {
     console.log('   分离目录：'+chalk.green(build_path))
     console.log('')
 });
+deps.unshift('页面规范验证');
+gulp.task('页面规范验证',function(){
+    return new Promise(function(resolve){
+        tgtest.check({
+            'file':{'name':'index.htm','charset':'GBK'}
+        },function (cb) {
+        	var error = [];
+        	var data = cb.checkResult.list;
+        	for(var i = 0;i < data.length;i++){
+                if(typeof  data[i].error_info !== 'undefined' && data[i].error_info != '' ){
+                    error.push(data[i].error_info);
+                    chalk.red(data[i].error_info);
+				}
+			};
+            if(error.length > 0){
+                console.log('')
+                console.log(chalk.red.bold('页面有如下错误不符合TGuide规范，请修改:'));
+				console.log('')
+
+            }
+            for(var i = 0;i < error.length;i++){
+            	console.log('> '+error[i])
+			}
+			if(error.length > 0){
+                process.exit()
+			}else{
+               resolve()
+			}
+
+
+        })
+	})
+
+})
+
+
+
 gulp.task('zip',deps, function() {
 	return gulp.src([build_path + '**'])
 	.pipe(zip(dirName+'.zip'))
