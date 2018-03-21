@@ -272,3 +272,6 @@ E:\codes\a20170601demo> npm run zip
 |{{{player}}}  | `//视频公用模块页面片(包含结构、css、脚本)` | 视频组件( [PC端文档](http://tgideas.qq.com/webplat/info/news_version3/804/25810/25811/25812/25814/m16274/201611/522294.shtml),[移动端文档](http://tgideas.qq.com/webplat/info/news_version3/804/25810/25811/25812/25814/m16274/201611/522294.shtml)) |
 |{{{lottery}}}  | `//抽奖模块页面片(包含结构、css、脚本)` | 抽奖组件( [PC端文档](http://tgideas.qq.com/webplat/info/news_version3/804/25810/25811/25812/25814/m16274/201611/521098.shtml),[移动端文档](http://tgideas.qq.com/webplat/info/news_version3/804/25810/25811/25812/25815/m16274/201612/529504.shtml)) |
 |{{{pop}}}  | `//弹窗模块页面片(包含结构、css、脚本)` | 弹窗组件( [PC端文档](http://tgideas.qq.com/webplat/info/news_version3/804/25810/25811/25813/25816/m16274/201611/522576.shtml),[移动端文档](http://tgideas.github.io/motion/doc/data/component/mo.Overlay.html)) |
+
+### 相关
+- [tgt-pkg](https://github.com/allanguys/tgt-pkg "tgt-pkg") - 互娱网站质量测试
