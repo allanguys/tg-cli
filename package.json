@@ -1,6 +1,6 @@
 {
   "name": "tg-cli",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "description": "tencent game web project scaffold",
   "main": "index.js",
   "scripts": {
