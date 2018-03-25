@@ -19,7 +19,7 @@
 <body>
 <!--
 外联样式按需使用
-<style rel="stylesheet" href="ossweb-img/css/comm.css"></style> -->
+<link rel="stylesheet" href="css/comm.css">-->
 <!--页面包裹层-->
 <div id="qhyx_container">
   所有页面元素放在 #qhyx_container 内，分离规则请按照通用规范分离
