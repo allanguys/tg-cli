@@ -7,6 +7,7 @@ var livereload = require('gulp-server-livereload');
 var imagemin = require('gulp-imagemin');
 var replace = require('gulp-replace');
 var fs = require('fs');
+var fse = require('fs-extra');
 var path = require('path');
 var clean = require('gulp-clean');
 var zip = require('gulp-zip');
@@ -22,6 +23,32 @@ var sepPath = [];
 var picPath = [];
 var build_path;
 var has = false;
+
+var gitignore = {
+	"dir":['.idea','node_modules','css','js','build']
+}
+
+var fileList = fs.readdirSync(path.resolve('./'));
+var copyDir = [];
+var copyFile = [];
+//需要复制的文件夹列表
+fileList.forEach(function (f,index) {
+    var stats = fs.statSync(f);
+    var ig = false;
+    if(stats.isDirectory()){
+        gitignore.dir.forEach(function (g) {
+ 			 if(f == g ){
+                 ig = true;
+            }
+		})
+		if(!ig){copyDir.push(f);}
+	}else{
+    	copyFile.push(f)
+	}
+
+});
+
+
 
 //分离路径
 	sepPath = [
@@ -181,7 +208,6 @@ for(var i = 0; i < picPath.length; i++) {
 		gulp.task('图片压缩', function() {
 			return gulp.src([picPath[i] + '*.jpg', picPath[i] + '*.gif', picPath[i] + '*.png', picPath[i] + '*.svg'])
 				.pipe(imagemin({
-					optimizationLevel: 5,
 					progressive: true,
 					interlaced: true,
 					multipass: true
@@ -195,7 +221,6 @@ for(var i = 0; i < picPath.length; i++) {
 		gulp.task(m, function() {
 			return gulp.src([picPath[i] + '*.jpg', picPath[i] + '*.gif', picPath[i] + '*.png', picPath[i] + '*.svg'])
 				.pipe(imagemin({
-					optimizationLevel: 5,
 					progressive: true,
 					interlaced: true,
 					multipass: true
@@ -219,6 +244,12 @@ gulp.task('default', deps_dev, function() {
     console.log('')
 });
 gulp.task('pure', deps, function() {
+	copyDir.forEach(function (c) {
+        fse.copySync(c,build_path + c)
+    })
+	copyFile.forEach(function (c) {
+        fse.copySync(c,build_path + c)
+    })
 	console.log('')
     console.log('   分离目录：'+chalk.green(build_path))
     console.log('')
