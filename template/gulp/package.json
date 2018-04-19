@@ -21,7 +21,7 @@
     "gulp-replace": "^0.5.4",
     "gulp-server-livereload": "^1.9.2",
     "gulp-zip": "^4.0.0",
-    "tgt-pkg": "^1.1.8"
+    "tgt-pkg": "^1.4.2"
   },
   "dependencies": {
     "fs-extra": "^5.0.0",
