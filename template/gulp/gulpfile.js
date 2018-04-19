@@ -62,7 +62,7 @@ try {
 	config = JSON.parse(config);
 	dirName = config.appName;
 	build_path = 'build/'+dirName+'/';
-	sepUrl = config.author == "cp" ? '//game.gtimg.cn/images/' + config.gameName + '/cp/' + dirName + '/' : '//game.gtimg.cn/images/' + config.gameName + '/' + dirName + '/';
+	sepUrl = config.author == "cp" ? '//game.gtimg.cn/images/' + config.gameName + '/cp/' + dirName + '/' : '//game.gtimg.cn/images/' + config.gameName + '/act/' + dirName + '/';
 	cssUrl = config.author == "cp" ?'href="//'+config.gameName+'.qq.com/cp/'+ dirName + '/css/':'href="//'+config.gameName+'.qq.com/act/'+ dirName + '/css/'
 	jsUrl = config.author == "cp" ?'src="//'+config.gameName+'.qq.com/cp/'+ dirName + '/js/':'src="//'+config.gameName+'.qq.com/act/'+ dirName + '/js/'
 
@@ -238,24 +238,28 @@ for(var i = 0; i < picPath.length; i++) {
 //});
 //deps.push('source');
 //deps_dev.push('source');
-gulp.task('default', deps_dev, function() {
-//    console.log('   未分离目录：'+chalk.green(dirName + '_未分离/'))
-    console.log('   分离目录：'+chalk.green(build_path))
-    console.log('')
-});
+// gulp.task('default', deps_dev, function() {
+// //    console.log('   未分离目录：'+chalk.green(dirName + '_未分离/'))
+//     console.log('   分离目录：'+chalk.green(build_path))
+//     console.log('')
+// });
 gulp.task('pure', deps, function() {
-	copyDir.forEach(function (c) {
-        fse.copySync(c,build_path + c)
-    })
-	copyFile.forEach(function (c) {
-        fse.copySync(c,build_path + c)
-    })
+
 	console.log('')
     console.log('   分离目录：'+chalk.green(build_path))
     console.log('')
 });
 deps_dev.unshift('页面规范验证');
 deps.unshift('页面规范验证');
+deps.unshift('复制文件');
+gulp.task('复制文件',function () {
+    copyDir.forEach(function (c) {
+        fse.copySync(c,build_path + c)
+    })
+    copyFile.forEach(function (c) {
+        fse.copySync(c,build_path + c)
+    })
+})
 gulp.task('页面规范验证',function(){
     return new Promise(function(resolve){
         tgtest.check({
