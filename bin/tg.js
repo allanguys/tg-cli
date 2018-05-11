@@ -10,19 +10,20 @@ var iconv = require('iconv-lite');
 var ora = require('ora');
 var fsp = require('fs-promise');
 var exec = require('promise-exec');
+var path = require('path');
 
 var Mustache = require('../lib/mustache');
 var checkVersion = require('../lib/check-version');
 var shelljs = require('shelljs/global');
-var rootPath = __dirname.replace(/(bin)|(lib)/, '');
+var rootPath = __dirname.replace(/(tg-cli\/bin)|(tg-cli\/lib)/, 'tg-cli\/');
 var nowPath = process.cwd();
 //config file
-var configFile = rootPath + 'tg_config.json';
-var templatePath = rootPath + 'template/';
+var configFile = path.resolve(__dirname, '../tg_config.json');
+var templatePath = path.resolve(__dirname, '../template\/') +'/' ;
 //lib
 
 var installConfig = require('../lib/installConfig.js');
-var package = require(rootPath + '/package.json');
+var package = require(path.resolve(__dirname, '../package.json'));
 
 //temp
 var configTemp = {};
@@ -198,51 +199,51 @@ function createrFn() {
 //公用模块
 function addMoudle(type, terminal) {
 	//jsLib
-	var jsLib = fs.readFileSync(templatePath + 'module/' + terminal + '/jslib.htm')
+	var jsLib = fs.readFileSync(templatePath + '/module/' + terminal + '/jslib.htm')
 	configTemp['jsLib'] = iconv.decode(jsLib, 'gbk');
 	if(configTemp.module == undefined) return
 	//milo
 	if(configTemp.module.length > 0) {
-		var milo = fs.readFileSync(templatePath + 'module/' + terminal + '/milo.htm');
+		var milo = fs.readFileSync(templatePath + '/module/' + terminal + '/milo.htm');
 		configTemp['milo'] = iconv.decode(milo, 'gbk');
 	}
 
 	//通用登录
 	if(configTemp.module.indexOf('IEG通用登录') >= 0) {
-		var login = fs.readFileSync(templatePath + 'module/' + terminal + '/login.htm');
+		var login = fs.readFileSync(templatePath + '/module/' + terminal + '/login.htm');
 		configTemp['login'] = iconv.decode(login, 'gbk');
 	}
 	//弹窗
 	if(configTemp.module.indexOf('浮层') >= 0) {
-		var pop = fs.readFileSync(templatePath + 'module/' + terminal + '/pop.htm');
+		var pop = fs.readFileSync(templatePath + '/module/' + terminal + '/pop.htm');
 		configTemp['pop'] = iconv.decode(pop, 'gbk');
 	}
 
 
 	//视频
 	if(configTemp.module.indexOf('视频') >= 0) {
-		var player = fs.readFileSync(templatePath + 'module/common/player.htm')
+		var player = fs.readFileSync(templatePath + '/module/common/player.htm')
 		configTemp['player'] = iconv.decode(player, 'gbk');
 	}
 	//选项卡
 	if(configTemp.module.indexOf('选项卡') >= 0) {
-		var tab = fs.readFileSync(templatePath + 'module/' + terminal + '/tab.htm')
+		var tab = fs.readFileSync(templatePath + '/module/' + terminal + '/tab.htm')
 		configTemp['tab'] = iconv.decode(tab, 'gbk');
 	}
 	//轮播图
 	if(configTemp.module.indexOf('轮播图') >= 0) {
-		var scroll = fs.readFileSync(templatePath + 'module/' + terminal + '/scroll.htm')
+		var scroll = fs.readFileSync(templatePath + '/module/' + terminal + '/scroll.htm')
 		configTemp['scroll'] = iconv.decode(scroll, 'gbk');
 	}
 	//抽奖
 	if(configTemp.module.indexOf('抽奖') >= 0) {
-		var lottery = fs.readFileSync(templatePath + 'module/' + terminal + '/lottery.htm')
+		var lottery = fs.readFileSync(templatePath + '/module/' + terminal + '/lottery.htm')
 		configTemp['lottery'] = iconv.decode(lottery, 'gbk');
 	}
 }
 //SEO
 function  seoInfo(){
-	 var m = JSON.parse(fs.readFileSync(templatePath + 'seo/meta.json').toString()).list;
+	 var m = JSON.parse(fs.readFileSync(templatePath + '/seo/meta.json').toString()).list;
 	 for (g in m) {
 	 	if(m[g].game == configTemp.gameName){
 	 		configTemp['keywords'] = m[g].keywords;
