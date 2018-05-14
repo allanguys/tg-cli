@@ -150,6 +150,8 @@ function createrFn() {
 	if(configTemp.appType == '移动专题') {
 		var type = 'act';
 		var terminal = 'm';
+		console.log(fs.existsSync(templatePath + type + '/' + terminal + configTemp.gameName + '/'))
+		console.log(configTemp.gameName)
 		if(configTemp.gameName && fs.existsSync(templatePath + type + '/' + terminal + configTemp.gameName + '/')) {
 			var path = type + '/' + terminal + configTemp.gameName;
 			console.log('正在生成' + configTemp.gameName + '的单独模板...');
@@ -275,27 +277,26 @@ function createTemplate(path, type, terminal) {
 			configTemp['team'] = 'Tgideas'
 		};
 	}
-
+    console.log(templatePath + path + '/index.htm');
 	fs.readFile(templatePath + path + '/index.htm', function(err, buffer) {
 		if(err) throw err;
 		var str = iconv.decode(buffer, 'gbk');
-
 		var M = Mustache.render(str, configTemp);
 		var spinner = ora('   正在生成...').start();
 		//复制模板目录
-		fsp.copy(templatePath + path + '/', nowPath + '\\' + configTemp.appName + '/')
+		fsp.copy(templatePath + path + '/', nowPath + '/' + configTemp.appName + '/')
 		.then(function(){
 			//生成首页
-			return fsp.ensureDir(nowPath + '\\' + configTemp.appName + '')
+			return fsp.ensureDir(nowPath + '/' + configTemp.appName + '')
 		}).then(function(){
 			//写入文件
-			return fsp.writeFile(nowPath + '\\' + configTemp.appName + '/index.htm', iconv.encode(M, 'gbk'));
+			return fsp.writeFile(nowPath + '/' + configTemp.appName + '/index.htm', iconv.encode(M, 'gbk'));
 		}).then(function(){
 			//生成配置文件
-			return fsp.writeFile(nowPath + '\\' + configTemp.appName + '/tg_config.json', tg_config)
+			return fsp.writeFile(nowPath + '/' + configTemp.appName + '/tg_config.json', tg_config)
 		}).then(function(){
 			//生成gulp配置&目录主要配置完成
-			return 	fsp.copy(templatePath + '/gulp', nowPath + '\\' + configTemp.appName + '/')
+			return 	fsp.copy(templatePath + '/gulp', nowPath + '/' + configTemp.appName + '/')
 		}).then(function(){
 			spinner.stop();
 			console.log('')
@@ -307,19 +308,19 @@ function createTemplate(path, type, terminal) {
 				console.log('')
 				//安装依赖
 				exec(npmSource + ' install', {
-					cwd: nowPath + '\\' + configTemp.appName + ''
+					cwd: nowPath + '/' + configTemp.appName + ''
 				}).then(function(){
 					console.log('')
 					spinnerInstall.stop();
  					ora(chalk.green('相关依赖安装成功！')).succeed();
 					exec(npmSource + ' install -g gulp', {
-						cwd: nowPath + '\\' + configTemp.appName + ''
+						cwd: nowPath + '/' + configTemp.appName + ''
 					})
 				}).then(function(){
                     console.log('')
                     ora(chalk.green('gulp安装成功！')).succeed();
                     console.log('')
-                    console.log(chalk.gray('   您的文件路径：') + nowPath + '\\' + configTemp.appName + '\\');
+                    console.log(chalk.gray('   您的文件路径：') + nowPath + '/' + configTemp.appName + '/');
                     console.log('')
                     console.log('   使用gulp：');
                     console.log('');
@@ -333,7 +334,7 @@ function createTemplate(path, type, terminal) {
 		    //默认不初始化gulp
 			}else{
 				console.log('');
-				console.log(chalk.gray('   您的文件路径：') + nowPath + '\\' + configTemp.appName + '\\');
+				console.log(chalk.gray('   您的文件路径：') + nowPath + '/' + configTemp.appName + '\\');
 				console.log('');
 				console.log(chalk.gray('   接下来，请执行：'));
 				console.log('');
