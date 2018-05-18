@@ -150,8 +150,6 @@ function createrFn() {
 	if(configTemp.appType == '移动专题') {
 		var type = 'act';
 		var terminal = 'm';
-		console.log(fs.existsSync(templatePath + type + '/' + terminal + configTemp.gameName + '/'))
-		console.log(configTemp.gameName)
 		if(configTemp.gameName && fs.existsSync(templatePath + type + '/' + terminal + configTemp.gameName + '/')) {
 			var path = type + '/' + terminal + configTemp.gameName;
 			console.log('正在生成' + configTemp.gameName + '的单独模板...');
@@ -168,6 +166,7 @@ function createrFn() {
 		var type = 'act';
 		var terminal = 'pc';
 		var path = '';
+		console.log(templatePath + type + '/' + terminal  + '/'+ configTemp.gameName + '/')
 		if(configTemp.gameName && fs.existsSync(templatePath + type + '/' + terminal + configTemp.gameName + '/')) {
 			var path = type + '/' + terminal + configTemp.gameName;
 			console.log('   正在生成' + configTemp.gameName + '的单独模板...');
@@ -184,7 +183,7 @@ function createrFn() {
 		var type = 'act';
 		var terminal = 'h5video';
 		var path = '';
-		if(configTemp.gameName && fs.existsSync(templatePath + type + '/' + terminal + configTemp.gameName + '/')) {
+		if(configTemp.gameName && fs.existsSync(templatePath + type + '/' + terminal + '/' + configTemp.gameName + '/')) {
 			var path = type + '/' + terminal + configTemp.gameName;
 			console.log('   正在生成' + configTemp.gameName + '的单独模板...');
 			//生成模板
@@ -245,16 +244,21 @@ function addMoudle(type, terminal) {
 }
 //SEO
 function  seoInfo(){
-	 var m = JSON.parse(fs.readFileSync(templatePath + '/seo/meta.json').toString()).list;
-	 for (g in m) {
-	 	if(m[g].game == configTemp.gameName){
-	 		configTemp['keywords'] = m[g].keywords;
-	 		configTemp['description'] = m[g].description;
-	 		configTemp['gamecn'] = m[g].gamecn;
-	 	}
-	 }
-}
+	 var m = JSON.parse(fs.readFileSync(templatePath + '/gameinfo.js').toString()).list;
+    m.forEach(function (value) {
+        if(value.domain == configTemp.gameName){
+         	console.log('===============================')
+            configTemp['keywords'] =value.keywords;
+            configTemp['description'] = value.description;
+            configTemp['gamecn'] = value.gameName;
+            configTemp['domain'] = value.domain;
+            configTemp['imagePath'] =(value.imagePath == '' || typeof value.imagePath == 'undefined' )? value.domain: value.imagePath;
+            console.log(configTemp)
+        }
+	})
 
+
+}
 //创建模板
 function createTemplate(path, type, terminal) {
 
@@ -277,7 +281,7 @@ function createTemplate(path, type, terminal) {
 			configTemp['team'] = 'Tgideas'
 		};
 	}
-    console.log(templatePath + path + '/index.htm');
+    tg_config =  JSON.stringify(configTemp)
 	fs.readFile(templatePath + path + '/index.htm', function(err, buffer) {
 		if(err) throw err;
 		var str = iconv.decode(buffer, 'gbk');
