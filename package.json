@@ -1,6 +1,6 @@
 {
   "name": "tg-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "tencent game web project scaffold",
   "main": "index.js",
   "scripts": {
@@ -30,6 +30,7 @@
     "ora": "^1.2.0",
     "promise-exec": "^0.1.0",
     "request": "^2.81.0",
-    "shelljs": "^0.7.7"
+    "shelljs": "^0.7.7",
+    "user": "0.0.0"
   }
 }
