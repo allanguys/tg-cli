@@ -15,14 +15,19 @@ var chalk = require('chalk');
 var cheerio = require('gulp-cheerio');
 var iconv = require('gulp-iconv');
 var iconvLite = require('iconv-lite');
+var _ = require('lodash');
 var tgtest = require('tgt-pkg');
 var config = {};
 var deps = [];
 var deps_dev = [];
+var deps_html = [];
+var deps_image = [];
 var sepPath = [];
 var picPath = [];
 var build_path;
 var has = false;
+
+
 
 var gitignore = {
     "dir":['.idea','node_modules','css','js','build']
@@ -205,6 +210,7 @@ deps_dev.push('copyConfig');
 for(var i = 0; i < picPath.length; i++) {
     (function(i) {
         deps.push('图片压缩');
+        deps_image.push('图片压缩');
         gulp.task('图片压缩', function() {
             return gulp.src([picPath[i] + '*.jpg', picPath[i] + '*.gif', picPath[i] + '*.png', picPath[i] + '*.svg'])
                 .pipe(imagemin({
@@ -231,27 +237,12 @@ for(var i = 0; i < picPath.length; i++) {
 };
 
 
-//在zip和pure task下生成原始文件夹供接口人测试
-//gulp.task('source',function() {
-//	return gulp.src(['*.**','*/*.**','!gulpfile.js', '!package.json','!tg_config.json','!node_modules/*','!*.zip','!'+dirName+'*/*.*'])
-//	.pipe(gulp.dest(dirName + '_未分离/'));
-//});
-//deps.push('source');
-//deps_dev.push('source');
-// gulp.task('default', deps_dev, function() {
-// //    console.log('   未分离目录：'+chalk.green(dirName + '_未分离/'))
-//     console.log('   分离目录：'+chalk.green(build_path))
-//     console.log('')
-// });
-gulp.task('pure', deps, function() {
 
-    console.log('')
-    console.log('   分离目录：'+chalk.green(build_path))
-    console.log('')
-});
+
 deps_dev.unshift('页面规范验证');
 deps.unshift('页面规范验证');
 deps.unshift('复制文件');
+deps_html = _.pull(deps, '图片压缩');
 gulp.task('复制文件',function () {
     copyDir.forEach(function (c) {
         fse.copySync(c,build_path + c)
@@ -306,4 +297,22 @@ gulp.task('zip',deps, function() {
             console.log('   压缩包：'+chalk.green('build/'+dirName + '.zip'))
             console.log('')
         });
+});
+gulp.task('pure', deps, function() {
+
+    console.log('')
+    console.log('   分离目录：'+chalk.green(build_path))
+    console.log('')
+});
+gulp.task('html', deps_html, function() {
+
+    console.log('')
+    console.log('   分离目录：'+chalk.green(build_path))
+    console.log('')
+});
+gulp.task('image', deps_image, function() {
+
+    console.log('')
+    console.log('   分离目录：'+chalk.green(build_path))
+    console.log('')
 });

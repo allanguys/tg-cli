@@ -7,6 +7,8 @@
   "scripts": {
     "dev": "./node_modules/.bin/gulp watch",
     "build": "./node_modules/.bin/gulp pure",
+    "build:html": "./node_modules/.bin/gulp html",
+    "build:image": "./node_modules/.bin/gulp image",
     "zip": "./node_modules/.bin/gulp zip"
   },
   "author": "allanglwang",
@@ -25,6 +27,7 @@
   },
   "dependencies": {
     "fs-extra": "^5.0.0",
-    "gulp-server-livereload": "^1.9.2"
+    "gulp-server-livereload": "^1.9.2",
+    "lodash": "^4.17.10"
   }
 }
