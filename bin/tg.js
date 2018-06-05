@@ -254,8 +254,6 @@ function  seoInfo(){
             configTemp['imagePath'] =(value.imagePath == '' || typeof value.imagePath == 'undefined' )? value.domain: value.imagePath;
         }
 	})
-
-
 }
 //创建模板
 function createTemplate(path, type, terminal) {
