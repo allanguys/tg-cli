@@ -132,6 +132,38 @@ for(var i = 0; i < sepPath[0].length; i++) {
                     decoding: 'gbk',
                     encoding: 'utf-8'
                 }))
+                //自动补齐seo信息
+                .pipe(cheerio({
+                        run:function ($, file) {
+                            var titleText = $('title').text();
+                            $('a').each(function () {
+                                var a = $(this);
+                                //网站使用 rel="noopener" 打开外部锚，https://developers.google.com/web/tools/lighthouse/audits/noopener?hl=zh-cn
+                                if(a.attr('target') == '_blank'){
+                                    if(a.attr('rel') !== 'noopener'){
+                                        a.attr('rel','noopener');
+                                    }
+                                }
+                                //自动补充title
+                                if(typeof a.attr('title') == 'undefined' || a.attr('title') == ''){
+                                    var t = a.text() == '' ? titleText : a.text()
+                                    a.attr('title',t);
+                                }
+                            });
+                            //自动补充alt
+                            $('img').each(function(){
+
+                                var img = $(this);
+                                if(typeof img.attr('alt') == 'undefined' || img.attr('alt') == ''){
+                                    img.attr('alt',titleText)
+                                }
+                            })
+                        },
+                        parserOptions: {
+                            decodeEntities: false
+                        }
+                    })
+                )
                 //图片路径分离
                 .pipe(replace(/(ossweb-img\/)|(..\/ossweb-img\/)/g, sepUrl))
                 //样式路径分离
