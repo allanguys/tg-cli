@@ -15,6 +15,7 @@ var chalk = require('chalk');
 var cheerio = require('gulp-cheerio');
 var iconv = require('gulp-iconv');
 var iconvLite = require('iconv-lite');
+var crypto = require('crypto');
 var _ = require('lodash');
 var tgtest = require('tgt-pkg');
 var config = {};
@@ -27,6 +28,7 @@ var picPath = [];
 var build_path;
 var has = false;
 
+var md5 = crypto.createHash('md5').update(new Date().toString()).digest('hex');
 
 
 var gitignore = {
@@ -154,8 +156,10 @@ for(var i = 0; i < sepPath[0].length; i++) {
                             $('img').each(function(){
 
                                 var img = $(this);
+                                var src = img.attr('src');
                                 if(typeof img.attr('alt') == 'undefined' || img.attr('alt') == ''){
                                     img.attr('alt',titleText)
+                                    img.attr('src',src+'?v='+md5)
                                 }
                             })
                         },
@@ -181,6 +185,7 @@ for(var i = 0; i < sepPath[0].length; i++) {
                 );
         });
     })(i);
+
     (function(i) {
         deps_dev.push('sep' + i + '_dev')
         //分离DEV
@@ -202,6 +207,7 @@ for(var i = 0; i < sepPath[0].length; i++) {
                             });
                             $('img').each(function(){
                                 var img = $(this);
+                                console.log(img)
                                 if(img.attr('alt') == undefined || img.attr('alt') == ''){
                                     img.attr('alt',titleText)
                                 }
@@ -274,7 +280,7 @@ for(var i = 0; i < picPath.length; i++) {
 deps_dev.unshift('页面规范验证');
 deps.unshift('页面规范验证');
 deps.unshift('复制文件');
-deps_html = _.pull(deps, '图片压缩');
+deps_html = _.without(deps, '图片压缩');
 gulp.task('复制文件',function () {
     copyDir.forEach(function (c) {
         fse.copySync(c,build_path + c)
