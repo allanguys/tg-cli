@@ -29,9 +29,13 @@ npm install -g tg-cli
 
 **推荐**使用国内镜像安装 [cnpm](https://cnpmjs.org/)
 
-----------
+<hr>
 
 ## 创建专题
+
+### 使用预览
+![使用预览](https://raw.githubusercontent.com/allanguys/tg-cli/master/READEME/20180605.gif)
+
 
 安装完成以后，可以在命令行下使用 `tg` 命令来创建专题，该命令的用法：
 
@@ -114,7 +118,51 @@ $ tg
 
    请愉快地coding吧:)
 ```
+<hr>
 
+## 分离和打包
+
+页面制作完毕之后，可以进行分离和打包操作：
+
+- 分离
+
+``` bash
+  npm run build
+  ```
+
+该命令会对网页、js、css文件中的路径进行必要的替换，把对ossweb-img目录下的文件的引用替换为静态CDN的完整URL。然后把处理后的文件拷贝到 `build` 目录下的同名文件夹中。建议内部重构同学用该命令进行分离后再通过SVN上传。
+
+- 分离并打包
+
+``` bash
+  npm run zip
+  ```
+
+将会分离页面路径、压缩图片、复制配置文件，并将他们打包zip文件
+建议外包同学用该命令进行分离打包后，通过QCP系统上传生成的zip包以同步到服务器，或者将zip包发给接口人即可。
+
+
+- 分离文件
+
+``` bash
+  npm run build:html
+  ```
+只分离文件，不压缩图片。 `方便后期快捷修改html文件`
+
+- 压缩图片
+
+``` bash
+  npm run build:image
+  ```
+只压缩ossweb-img目录中的图片，不做其他操作。
+
+
+
+### 使用预览
+![使用预览](https://raw.githubusercontent.com/allanguys/tg-cli/master/READEME/201806051.gif)
+
+
+<hr>
 
 ## 网页开发及实时预览
 
@@ -137,7 +185,7 @@ npm run dev
 ```
 
 执行上述命令后，默认浏览器会自动启动，并打开 **http://localhost:8000**，你对网页、样式、脚本、图片做的任何修改，一旦保存，浏览器会立即自动刷新当前页面。
-
+<hr>
 ## 目录说明
 生成的需求目录（`aYYYYMMDDxxxx`）下，目录结构如下图所示：
 ```plain
@@ -151,33 +199,6 @@ index.htm                       //首页文件，可以根据需要修改后缀�
 ```
 除了上述需求相关文件之外，目录下还会有`node_modules`、`package.json`、`gulpfile.js`、`tg_config.js`这几个文件，请勿修改或删除。
 如果需要用到 **Server Side Includes** 特性，可以在目录下创建一个 `inc` 目录，将页面片（后缀`.inc`）存放于其中。
-
-
-## 分离和打包
-
-页面制作完毕之后，可以进行分离和打包操作：
-
-1. 分离 (`npm run build`) 
-
->该命令会对网页、js、css文件中的路径进行必要的替换，把对ossweb-img目录下的文件的引用替换为静态CDN的完整URL。然后把处理后的文件拷贝到 `build` 目录下的同名文件夹中。建议内部重构同学用该命令进行分离后再通过SVN上传。
-
-2. 分离并打包（`npm run zip`）
-> 将会分离页面路径、压缩图片、复制配置文件，并将他们打包zip文件
->建议外包同学用该命令进行分离打包后，通过QCP系统上传生成的zip包以同步到服务器，或者将zip包发给接口人即可。
-
-
-3. 分离文件（`npm run build:html`）
-> 只分离文件，不压缩图片。方便后期快捷修改html文件
-
-3. 压缩图片（`npm run build:image`）
-> 只压缩图片，不做其他操作（请在run build之后执行此命令）
-
-## 更多资源
-
-* [视频教程](http://zzlt.qq.com/act/tgcli/index.html)
-
-* 使用预览
-![配置项目目录](https://raw.githubusercontent.com/allanguys/tg-cli/master/READEME/0510last.gif)
 
 
 ## 模板定制
