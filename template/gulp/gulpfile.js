@@ -159,7 +159,7 @@ for(var i = 0; i < sepPath[0].length; i++) {
                                 var src = img.attr('src');
                                 if(typeof img.attr('alt') == 'undefined' || img.attr('alt') == ''){
                                     img.attr('alt',titleText)
-                                    // img.attr('src',src+'?v='+md5)
+                                    img.attr('src',src+'?v='+md5)
                                 }
                             })
                         },
@@ -174,16 +174,6 @@ for(var i = 0; i < sepPath[0].length; i++) {
                 .pipe(replace(/(href="css\/)/g, cssUrl))
                 //脚本路径分离
                 .pipe(replace(/(src="js\/)/g, jsUrl))
-                //png版本号
-                .pipe(replace(/\.png/g, '.png?v='+md5))
-                //jpg版本号
-                .pipe(replace(/\.jpg/g, '.jpg?v='+md5))
-                //gif版本号
-                .pipe(replace(/\.gif/g, '.gif?v='+md5))
-                //css版本号
-                .pipe(replace(/\.css/g, '.css?v='+md5))
-                //js版本号
-                .pipe(replace(/\.js/g, '.css?v='+md5))
                 //适配https协议
                 .pipe(replace(/http:\/\//g, '\/\/'))
                 .pipe(iconv({
