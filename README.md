@@ -157,63 +157,20 @@ index.htm                       //首页文件，可以根据需要修改后缀�
 
 页面制作完毕之后，可以进行分离和打包操作：
 
-1. 分离 (`npm run build`)
-```bash
-E:\codes\a20170601demo> npm run build
-> iegact@1.0.0 build E:\codes\a20170601demo
-> gulp pure
+1. 分离 (`npm run build`) 
 
-[21:57:24] Using gulpfile E:\codes\a20170601demo\gulpfile.js
-[21:57:24] Starting 'sep0'...
-[21:57:24] Starting 'sep1'...
-[21:57:24] Starting 'sep2'...
-[21:57:24] Starting 'sep3'...
-[21:57:24] Starting 'sep4'...
-[21:57:24] Starting 'imagemin'...
-[21:57:24] Finished 'sep3' after 17 ms
-[21:57:24] gulp-imagemin: Minified 0 images
-[21:57:24] Finished 'sep2' after 67 ms
-[21:57:24] Finished 'sep4' after 66 ms
-[21:57:24] Finished 'imagemin' after 66 ms
-[21:57:24] Finished 'sep1' after 71 ms
-[21:57:24] Finished 'sep0' after 84 ms
-[21:57:24] Starting 'pure'...
-
-   分离目录：build/a20170601demo/
-
-[21:57:24] Finished 'pure' after 212 μs
-```
-该命令会对网页、js、css文件中的路径进行必要的替换，把对ossweb-img目录下的文件的引用替换为静态CDN的完整URL。然后把处理后的文件拷贝到 `build` 目录下的同名文件夹中。建议内部重构同学用该命令进行分离后再通过SVN上传。
+>该命令会对网页、js、css文件中的路径进行必要的替换，把对ossweb-img目录下的文件的引用替换为静态CDN的完整URL。然后把处理后的文件拷贝到 `build` 目录下的同名文件夹中。建议内部重构同学用该命令进行分离后再通过SVN上传。
 
 2. 分离并打包（`npm run zip`）
-```bash
-E:\codes\a20170601demo> npm run zip
+> 将会分离页面路径、压缩图片、复制配置文件，并将他们打包zip文件
+>建议外包同学用该命令进行分离打包后，通过QCP系统上传生成的zip包以同步到服务器，或者将zip包发给接口人即可。
 
-> iegact@1.0.0 zip E:\codes\a20170601demo
-> gulp zip
 
-[22:09:23] Using gulpfile E:\codes\a20170601demo\gulpfile.js
-[22:09:23] Starting 'sep0'...
-[22:09:23] Starting 'sep1'...
-[22:09:23] Starting 'sep2'...
-[22:09:23] Starting 'sep3'...
-[22:09:23] Starting 'sep4'...
-[22:09:23] Starting 'imagemin'...
-[22:09:23] Finished 'sep3' after 20 ms
-[22:09:23] gulp-imagemin: Minified 0 images
-[22:09:23] Finished 'sep0' after 79 ms
-[22:09:23] Finished 'sep1' after 69 ms
-[22:09:23] Finished 'sep2' after 68 ms
-[22:09:23] Finished 'sep4' after 67 ms
-[22:09:23] Finished 'imagemin' after 66 ms
-[22:09:23] Starting 'zip'...
+3. 分离文件（`npm run build:html`）
+> 只分离文件，不压缩图片。方便后期快捷修改html文件
 
-   分离目录：build/a20170601demo/
-   压缩包：build/a20170601demo.zip
-
-[22:09:23] Finished 'zip' after 17 ms
-```
-执行`npm run zip`命令后，同样会对需要处理的文件中的相对路径进行必要的替换，并将完成分离后的文件打包成zip格式的压缩包，存放于build目录下。建议外包同学用该命令进行分离打包后，通过QCP系统上传生成的zip包以同步到服务器，或者将zip包发给接口人即可。
+3. 压缩图片（`npm run build:image`）
+> 只压缩图片，不做其他操作（请在run build之后执行此命令）
 
 ## 更多资源
 

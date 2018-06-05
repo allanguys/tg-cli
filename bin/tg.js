@@ -247,13 +247,11 @@ function  seoInfo(){
 	 var m = JSON.parse(fs.readFileSync(templatePath + '/gameinfo.js').toString()).list;
     m.forEach(function (value) {
         if(value.domain == configTemp.gameName){
-         	console.log('===============================')
             configTemp['keywords'] =value.keywords;
             configTemp['description'] = value.description;
             configTemp['gamecn'] = value.gameName;
             configTemp['domain'] = value.domain;
             configTemp['imagePath'] =(value.imagePath == '' || typeof value.imagePath == 'undefined' )? value.domain: value.imagePath;
-            console.log(configTemp)
         }
 	})
 
