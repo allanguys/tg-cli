@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="gbk" />
+    <meta name="robots" content="all" />
+    <meta name="author" content="Tencent-{{team}}" />
+    <meta name="Description" content="{{description}}" />
+    <meta name="Keywords" content="{{keywords}}" />
+    <!-- 让IE以最高版本方式显示页面 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- 让QQ、360等双核浏览器以chrome的核心显示页面 -->
+    <meta name="renderer" content="webkit">
+    <!-- QQ聊天窗口名片 -->
+    <meta itemprop="name" content="{{gamecn}}">
+    <meta itemprop="description" content="{{description}}" />
+    <meta itemprop="image" content="">
+    <!-- SNS开放信息 -->
+    <meta property="og:type" content="link">
+    <meta property="og:title" content="{{gamecn}}">
+    <meta property="og:image" content="">
+    <!-- 设计：{{designAuthor}}  | 重构：{{author}} | 创建：{{time}}  -->
+    <title>-{{gamecn}}官方网站-腾讯游戏</title>
+    <!--默认开启内联样式-->
+    <style>
+       /*专题通用 Reset及弹窗*/
+        body,dd,dl,form,h1,h2,h3,h4,h5,h6,ol,p,ul{margin:0}body,button,input,select,textarea{font:12px/1.5 tahoma,'\5b8b\4f53',sans-serif}h1,h2,h3,h4,h5,h6{font-size:100%}b,em{font-style:normal}a{text-decoration:none}a:hover{text-decoration:underline}img{border:0}button,input,select,textarea{font-size:100%;outline:0}table{border-collapse:collapse;border-spacing:0}ol,td,th,ul{padding:0;list-style:none}body{background-color:#f5f8ff;font-family:Microsoft Yahei;text-align:center}.comm_pop_wrap{width:800px;margin:0 auto}.info h1{font-size:30px;color:#000;line-height:30px;font-weight:700}.info h2{font-size:18px;color:#fff;line-height:30px;text-align:left;background-color:#333;padding:5px 10px;margin-top:20px}.info ul{font-size:14px;color:#333;border:#999 1px dotted;background-color:#ececec;line-height:18px;text-align:left;margin-top:10px;padding:10px}body .act_pop{margin:20px auto}.act_pop{width:569px;background-color:#F9F5FF;position:relative;border:3px solid #E7BB0C;text-align:center;font-size:14px;color:#011c31;color:#5B5B5B}.act_pop .act_pop_sprite{background-image:url(//game.gtimg.cn/images/fn/act/a20180606comm/spr.png);background-repeat:no-repeat}.act_pop .act_pop_none{display:none}.act_pop .act_pop_red{color:#CE0000}.act_pop .text_c{text-align:center;font-size:16px}.act_pop .font_s12{font-size:12px}.act_pop .font_s24{font-size:24px}.act_pop h2{background-color:#E7BB0C;color:#090909;background-position:-560px 900px;font-size:24px;line-height:60px;text-align:left;text-indent:15px}.act_pop p{margin:15px 0;text-align:left;line-height:24px}.act_pop a:active,.act_pop a:hover{text-decoration:underline}.act_pop .act_pop_close{width:26px;height:28px;right:17px;top:17px;position:absolute;background-position:0 0}.act_pop .act_pop_main{padding:20px}.act_pop .text_wb{border:1px solid #d2d2d2;color:#636363;line-height:2.2;padding:5px 15px}.act_pop .act_pop_btn{margin:20px 10px 10px 10px;display:inline-block;width:216px;height:68px;line-height:68px;background-position:0 -40px;text-align:center;color:#090909}.act_pop .act_pop_btn2{width:275px;background-position:0 -116px}.act_pop a.act_pop_btn:link,.act_pop a.act_pop_btn:visited{color:#090909;font-size:24px;font-weight:700;transition:all .2s linear}.act_pop a.act_pop_btn:active,.act_pop a.act_pop_btn:hover{color:#090909;text-decoration:none;opacity:.9;transition:all .2s linear;transform:scale(.95)}.act_pop .act_pop_table{width:100%;font-size:12px;line-height:24px}.act_pop .act_pop_table .even td{background:#EEE9F6}.act_pop .act_pop_table th{color:#6f6f6f;background-color:#E1E1E3;height:38px;line-height:38px;font-size:16px;font-weight:400;color:#333;font-weight:700}.act_pop .act_pop_table td{color:#8c8c8c;height:24px;padding:8px 2px;font-size:14px}.act_pop .act_pop_table tfoot a,.act_pop .act_pop_table tfoot span{display:inline-block;margin:0 5px}.act_pop .cdkey input,.act_pop .cdkey span{display:inline-block;color:#8c8c8c;width:260px;height:42px;border:1px solid #CBCBCB;background-color:#FFF;line-height:42px;padding:0 5px;font-size:20px;vertical-align:middle}.act_pop .cdkey .act_pop_copy{display:inline-block;width:88px;height:42px;background-position:-50px 0;line-height:42px;padding:0 5px;vertical-align:middle;background:#919191;color:#fff;font-size:18px;border:1px solid #919191;border-left:0}.act_pop .adr{border-collapse:collapse;width:80%;margin:0 auto}.act_pop .adr td{color:#472f2f;height:22px;padding:5px;text-align:left}.act_pop .adr input,.act_pop .adr textarea{background-color:#FBF9FF;border:#d2d2d2 1px solid;height:32px;line-height:32px;text-align:left;color:#8c8c8c;text-indent:5px;font-size:14px;width:260px}.act_pop .adr textarea{height:66px}.act_pop .adr .ta-r{text-align:right}.act_pop .pagenextnone,.act_pop .pageprenone{background:url(//game.gtimg.cn/images/fn/act/a20180606comm/spr.png) no-repeat -48px -3px;height:21px;line-height:21px;color:#090909;width:59px;margin-left:-3px!important;display:inline-block}
+
+        .fix:after{content:'\20';display:block;height:0;clear:both;font-family:\5FAE\8F6F\96C5\9ED1;}
+        .fix{*zoom:1;}
+    </style>
+<!--
+外联样式按需使用	
+<link rel="stylesheet" href="css/comm.css">-->
+</head>
+
+<body>
+
+{{{milo}}}
+
+{{{jsLib}}}
+
+
+{{{tab}}}
+
+
+{{{scroll}}}
+
+
+
+{{{login}}}
+
+
+
+{{{player}}}
+
+
+
+{{{lottery}}}
+
+
+
+{{{pop}}}
+<!-- 提示信息浮层 Start -->
+<div class="act_pop">
+    <a href="javascript:showDialog.hide();" title="关闭" class="act_pop_close act_pop_sprite"><span class="act_pop_none">关闭</span></a>
+    <h2 class="act_pop_sprite">兑换结果</h2>
+    <div class="act_pop_main">
+        <p class="text_c">恭喜您！成功兑换了<span class="act_pop_red">XX</span>！请登录游戏个人仓库进行查收。</p>
+        <a href="#" title="分享到微博" class="act_pop_btn act_pop_sprite">分享到微博</a>
+    </div>
+</div>
+<!-- 提示信息浮层 End -->
+
+
+<!-- 微博转发浮层 Start -->
+<div class="act_pop">
+    <a href="javascript:showDialog.hide();" title="关闭" class="act_pop_close act_pop_sprite"><span class="act_pop_none">关闭</span></a>
+    <h2 class="act_pop_sprite">转发微博</h2>
+    <div class="act_pop_main">
+        <p class="text_wb">我参加了《战争前线》12月21日<span class="act_pop_red">#世界末日#</span>的竞猜投票，12月21日后将迎接一场世界新纪元的开始还是#战争前线#普天同庆日？让我们一起期待！投票就有圣诞礼物、金币礼包等拿~ (+活动链接)</p>
+        <a href="#" title="返回" class="act_pop_btn act_pop_btn2 act_pop_sprite">领取并分享到微博</a>
+    </div>
+</div>
+<!-- 微博转发浮层 End -->
+
+<!-- 领取CDKYE浮层 Start -->
+<div class="act_pop">
+    <a href="javascript:showDialog.hide();" title="关闭" class="act_pop_close act_pop_sprite"><span class="act_pop_none">关闭</span></a>
+    <h2 class="act_pop_sprite">获取CDKEY</h2>
+    <div class="act_pop_main">
+        <p class="text_c font_s24">恭喜您获得战争雷霆内测资格！</p>
+        <div class="cdkey"><input type="text" id="pop_cdkey" value="YUIHBFYUGO6786GG"><a href="javascript:__pop_copy('pop_cdkey')" title="复制" class="act_pop_copy">复制</a></div>
+        <a href="#" title="立即兑换" class="act_pop_btn act_pop_sprite">立即兑换</a>
+    </div>
+</div>
+<!-- 领取CDKYE浮层 End -->
+
+
+<!-- 表格类信息浮层 Start -->
+<div class="act_pop">
+    <a href="javascript:showDialog.hide();" title="关闭" class="act_pop_close act_pop_sprite"><span class="act_pop_none">关闭</span></a>
+    <h2 class="act_pop_sprite">我的礼包记录</h2>
+    <div class="act_pop_main">
+        <table class="act_pop_table">
+            <thead>
+            <tr>
+                <th>获奖大区</th>
+                <th>所获礼包</th>
+                <th>获奖时间</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>电信一区</td>
+                <td>狙击枪大礼包</td>
+                <td>2013-03-05</td>
+            </tr>
+            <tr class="even">
+                <td>电信一区</td>
+                <td>狙击枪大礼包</td>
+                <td>2013-03-05</td>
+            </tr>
+            <tr>
+                <td>电信一区</td>
+                <td>狙击枪大礼包</td>
+                <td>2013-03-05</td>
+            </tr>
+            <tr>
+                <td>电信一区</td>
+                <td>狙击枪大礼包</td>
+                <td>2013-03-05</td>
+            </tr>
+            <tr>
+                <td>电信一区</td>
+                <td>狙击枪大礼包</td>
+                <td>2013-03-05</td>
+            </tr>
+            <tr>
+                <td colspan="3">您尚未获得任何礼包</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="3" > <span>1/1页</span> <a title="#" class="pageprenone" href="#">上一页</a><a title="#" class="pagenextnone" href="#">下一页</a></td>
+            </tr>
+            </tfoot>
+        </table>
+        <p><b>温馨提示</b>：虚拟道具奖品将在24小时内发到您的游戏内仓库，请耐心等候，谢谢您的理解与支持！</p>
+    </div>
+</div>
+<!-- 表格类信息浮层 End -->
+
+
+<!-- 表单信息浮层 Start -->
+<div class="act_pop">
+    <a href="javascript:showDialog.hide();" title="关闭" class="act_pop_close act_pop_sprite"><span class="act_pop_none">关闭</span></a>
+    <h2 class="act_pop_sprite">我的礼包记录</h2>
+    <div class="act_pop_main">
+        <p class="text_c"><b>温馨提示</b>：为保证实物奖励能准确邮寄，下面所有项目务必详细填写！<br/><span class="act_pop_red">未获得实物奖励请勿填写</span></p>
+        <table class="adr">
+            <tr>
+                <td class="ta-r" width="100">姓名：</td>
+                <td><input class="ipt1" type="text" name="sName" id="sName"></td>
+            </tr>
+            <tr>
+                <td class="ta-r">身份证号码：</td>
+                <td><input class="ipt2" type="text" name="sIdentity" id="sIdentity"></td>
+            </tr>
+            <tr>
+                <td class="ta-r">手机号码：</td>
+                <td><input class="ipt1" type="text" name="sMobile" id="sMobile"></td>
+            </tr>
+            <tr>
+                <td class="ta-r">所在城市：</td>
+                <td><select name="sProvince" id="province" ></select> 省 <select name="sCity" id="city"></select> 市</td>
+            </tr>
+            <tr>
+                <td class="ta-r">详细地址：</td>
+                <td><textarea name="sAddress" rows="3" class="ipt2" id="sAddress"></textarea></td>
+            </tr>
+            <tr>
+                <td class="ta-r">邮编：</td>
+                <td><input class="ipt1" type="text" name="sPostCode" id="sPostCode"></td>
+            </tr>
+        </table>
+        <a href="#" title="提交" class="act_pop_btn act_pop_sprite">提交</a>
+    </div>
+</div>
+<!-- 表单信息浮层 End -->
+<!--IEG通用底部-->
+<script id="afooter" src="http://game.gtimg.cn/images/js/2018foot/foot.js"></script>
+<!--通用统计代码-->
+<script src="//ossweb-img.qq.com/images/js/PTT/ping_tcss_tgideas_https_min.js"></script>
+<script>
+    //复制cdkey公用方法
+    function __pop_copy(dom) {
+        var c = document.getElementById('pop_cdkey');
+        c.select();
+        try {
+            document.execCommand('copy');
+            c.blur();
+            alert('复制成功');
+        }
+        catch (err) {
+            alert('请使用Ctrl+C直接复制前方的字符串please press Ctrl/Cmd+C to copy');
+        }
+    }
+//此段代码不能放到外链JS中，
+var setSite={ //设置网站属性
+ siteType:"{{appName}}", //必填项:"os"代表是官网，如果不是，则填写actName例如a20160701xxx
+ pageType:"index", //必填项:本页面的定位；按照页面含义填写例如main||list||detail||download||share||page1||pageN
+ pageName:"首页", //必填项:页面中文名
+ osact:0, //选填项:是否是官网专题(在官网运营的专题)boolean；默认是0；可以在链接上加入参数osact=1来灵活设置
+ ingame:0, //选填项:是否投放在游戏APP内boolean；默认是0；可以在链接上加入参数ingame=1来灵活设置
+ stayTime:0 //选填项:是否需要统计停留时长boolean；默认是0
+}
+if(typeof(pgvMain)=='function')pgvMain();TG_GKD_S('{{appName}}');//千万不能忘记！
+</script>
+</body>
+</html>
