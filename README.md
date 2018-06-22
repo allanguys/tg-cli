@@ -14,9 +14,11 @@
 
 
 * **集成gulp**
->- 自动分离图片路径
+>- 分离图片路径
 >- 压缩图片
->- 自动补齐`img['alt']`/`a['title']`属性
+>- 补齐`img['alt']`/`a['title']`属性
+>- 修复如target="_blank"等安全问题
+>- 为静态资源添加时间戳
 
 ## 安装
 环境: [Node.js](https://nodejs.org/en/download/) , npm  3.0+、 [Git](https://git-scm.com/).
@@ -36,6 +38,7 @@ npm install -g tg-cli
 ### 使用预览
 ![使用预览](https://raw.githubusercontent.com/allanguys/tg-cli/master/READEME/20180605.gif)
 
+[查看命令输入详解](https://raw.githubusercontent.com/allanguys/tg-cli/master/READEME/ex.jpg)
 
 安装完成以后，可以在命令行下使用 `tg` 命令来创建专题，该命令的用法：
 
@@ -184,9 +187,12 @@ npm install
 npm run dev
 ```
 
-执行上述命令后，默认浏览器会自动启动，并打开 **http://localhost:8000**，你对网页、样式、脚本、图片做的任何修改，一旦保存，浏览器会立即自动刷新当前页面。
-<hr>
+执行上述命令后，默认浏览器会自动启动，并打开 **http://localhost:8000**，在文件有任何修改时，浏览器会立即自动刷新当前页面。
+
+
+
 ## 目录说明
+
 生成的需求目录（`aYYYYMMDDxxxx`）下，目录结构如下图所示：
 ```plain
 css                             //样式文件夹，可以删除，建议外联样式放到ossweb-img目录下
