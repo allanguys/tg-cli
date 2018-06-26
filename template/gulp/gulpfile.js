@@ -183,7 +183,7 @@ for(var i = 0; i < sepPath[0].length; i++) {
                 //css版本号
                 .pipe(replace(/\.css/g, '.css?v='+md5))
                 //js版本号
-                .pipe(replace(/\.js/g, '.css?v='+md5))
+                .pipe(replace(/\.js/g, '.js?v='+md5))
                 //适配https协议
                 .pipe(replace(/http:\/\//g, '\/\/'))
                 .pipe(iconv({
