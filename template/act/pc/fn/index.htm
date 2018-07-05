@@ -20,46 +20,30 @@
     <meta property="og:image" content="">
     <!-- 设计：{{designAuthor}}  | 重构：{{author}} | 创建：{{time}}  -->
     <title>-{{gamecn}}官方网站-腾讯游戏</title>
-    <!--默认开启内联样式-->
+    <link rel="stylesheet" href="//game.gtimg.cn/images/fn/act/a20180606comm/act_comm.css">
     <style>
-       /*专题通用 Reset及弹窗*/
-        body,dd,dl,form,h1,h2,h3,h4,h5,h6,ol,p,ul{margin:0}body,button,input,select,textarea{font:12px/1.5 tahoma,'\5b8b\4f53',sans-serif}h1,h2,h3,h4,h5,h6{font-size:100%}b,em{font-style:normal}a{text-decoration:none}a:hover{text-decoration:underline}img{border:0}button,input,select,textarea{font-size:100%;outline:0}table{border-collapse:collapse;border-spacing:0}ol,td,th,ul{padding:0;list-style:none}body{background-color:#f5f8ff;font-family:Microsoft Yahei;text-align:center}.comm_pop_wrap{width:800px;margin:0 auto}.info h1{font-size:30px;color:#000;line-height:30px;font-weight:700}.info h2{font-size:18px;color:#fff;line-height:30px;text-align:left;background-color:#333;padding:5px 10px;margin-top:20px}.info ul{font-size:14px;color:#333;border:#999 1px dotted;background-color:#ececec;line-height:18px;text-align:left;margin-top:10px;padding:10px}body .act_pop{margin:20px auto}.act_pop{width:569px;background-color:#F9F5FF;position:relative;border:3px solid #E7BB0C;text-align:center;font-size:14px;color:#011c31;color:#5B5B5B}.act_pop .act_pop_sprite{background-image:url(//game.gtimg.cn/images/fn/act/a20180606comm/spr.png);background-repeat:no-repeat}.act_pop .act_pop_none{display:none}.act_pop .act_pop_red{color:#CE0000}.act_pop .text_c{text-align:center;font-size:16px}.act_pop .font_s12{font-size:12px}.act_pop .font_s24{font-size:24px}.act_pop h2{background-color:#E7BB0C;color:#090909;background-position:-560px 900px;font-size:24px;line-height:60px;text-align:left;text-indent:15px}.act_pop p{margin:15px 0;text-align:left;line-height:24px}.act_pop a:active,.act_pop a:hover{text-decoration:underline}.act_pop .act_pop_close{width:26px;height:28px;right:17px;top:17px;position:absolute;background-position:0 0}.act_pop .act_pop_main{padding:20px}.act_pop .text_wb{border:1px solid #d2d2d2;color:#636363;line-height:2.2;padding:5px 15px}.act_pop .act_pop_btn{margin:20px 10px 10px 10px;display:inline-block;width:216px;height:68px;line-height:68px;background-position:0 -40px;text-align:center;color:#090909}.act_pop .act_pop_btn2{width:275px;background-position:0 -116px}.act_pop a.act_pop_btn:link,.act_pop a.act_pop_btn:visited{color:#090909;font-size:24px;font-weight:700;transition:all .2s linear}.act_pop a.act_pop_btn:active,.act_pop a.act_pop_btn:hover{color:#090909;text-decoration:none;opacity:.9;transition:all .2s linear;transform:scale(.95)}.act_pop .act_pop_table{width:100%;font-size:12px;line-height:24px}.act_pop .act_pop_table .even td{background:#EEE9F6}.act_pop .act_pop_table th{color:#6f6f6f;background-color:#E1E1E3;height:38px;line-height:38px;font-size:16px;font-weight:400;color:#333;font-weight:700}.act_pop .act_pop_table td{color:#8c8c8c;height:24px;padding:8px 2px;font-size:14px}.act_pop .act_pop_table tfoot a,.act_pop .act_pop_table tfoot span{display:inline-block;margin:0 5px}.act_pop .cdkey input,.act_pop .cdkey span{display:inline-block;color:#8c8c8c;width:260px;height:42px;border:1px solid #CBCBCB;background-color:#FFF;line-height:42px;padding:0 5px;font-size:20px;vertical-align:middle}.act_pop .cdkey .act_pop_copy{display:inline-block;width:88px;height:42px;background-position:-50px 0;line-height:42px;padding:0 5px;vertical-align:middle;background:#919191;color:#fff;font-size:18px;border:1px solid #919191;border-left:0}.act_pop .adr{border-collapse:collapse;width:80%;margin:0 auto}.act_pop .adr td{color:#472f2f;height:22px;padding:5px;text-align:left}.act_pop .adr input,.act_pop .adr textarea{background-color:#FBF9FF;border:#d2d2d2 1px solid;height:32px;line-height:32px;text-align:left;color:#8c8c8c;text-indent:5px;font-size:14px;width:260px}.act_pop .adr textarea{height:66px}.act_pop .adr .ta-r{text-align:right}.act_pop .pagenextnone,.act_pop .pageprenone{background:url(//game.gtimg.cn/images/fn/act/a20180606comm/spr.png) no-repeat -48px -3px;height:21px;line-height:21px;color:#090909;width:59px;margin-left:-3px!important;display:inline-block}
-
         .fix:after{content:'\20';display:block;height:0;clear:both;font-family:\5FAE\8F6F\96C5\9ED1;}
         .fix{*zoom:1;}
     </style>
-<!--
-外联样式按需使用	
-<link rel="stylesheet" href="css/comm.css">-->
+
 </head>
 
 <body>
-
 {{{milo}}}
-
 {{{jsLib}}}
-
-
 {{{tab}}}
-
-
 {{{scroll}}}
-
-
-
 {{{login}}}
-
-
-
 {{{player}}}
-
-
-
 {{{lottery}}}
-
-
-
 {{{pop}}}
+<!-- 视频浮层 Start -->
+<div class="act_pop act_pop_video">
+    <a href="javascript:showDialog.hide();" title="关闭" class="act_pop_close act_pop_sprite"><span class="act_pop_none">关闭</span></a>
+    <div class="apv_video_wrap">
+        这里放视频
+    </div>
+</div>
 <!-- 提示信息浮层 Start -->
 <div class="act_pop">
     <a href="javascript:showDialog.hide();" title="关闭" class="act_pop_close act_pop_sprite"><span class="act_pop_none">关闭</span></a>
@@ -70,8 +54,6 @@
     </div>
 </div>
 <!-- 提示信息浮层 End -->
-
-
 <!-- 微博转发浮层 Start -->
 <div class="act_pop">
     <a href="javascript:showDialog.hide();" title="关闭" class="act_pop_close act_pop_sprite"><span class="act_pop_none">关闭</span></a>
@@ -189,6 +171,8 @@
 <!-- 表单信息浮层 End -->
 <!--IEG通用底部-->
 <script id="afooter" src="http://game.gtimg.cn/images/js/2018foot/foot.js"></script>
+<!--通用头部-->
+<script src="//fn.qq.com/act/a20180606comm/js/top.js"></script>
 <!--通用统计代码-->
 <script src="//ossweb-img.qq.com/images/js/PTT/ping_tcss_tgideas_https_min.js"></script>
 <script>
