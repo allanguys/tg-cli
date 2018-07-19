@@ -1,6 +1,8 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+    <!--tg-cli-->
     <meta charset="gbk" />
     <meta name="robots" content="all" />
     <meta name="author" content="Tencent-{{team}}" />
@@ -175,6 +177,8 @@
 <script src="//fn.qq.com/act/a20180606comm/js/top.js"></script>
 <!--通用统计代码-->
 <script src="//ossweb-img.qq.com/images/js/PTT/ping_tcss_tgideas_https_min.js"></script>
+<!--专题通用导航,请与接口人确认是否需要添加-->
+<script src="//ossweb-img.qq.com/images/js/igt/ossweb-img/igt.js" top-distance="42" id="igt" charset="gb2312"></script>
 <script>
     //复制cdkey公用方法
     function __pop_copy(dom) {
@@ -198,7 +202,7 @@ var setSite={ //设置网站属性
  ingame:0, //选填项:是否投放在游戏APP内boolean；默认是0；可以在链接上加入参数ingame=1来灵活设置
  stayTime:0 //选填项:是否需要统计停留时长boolean；默认是0
 }
-if(typeof(pgvMain)=='function')pgvMain();TG_GKD_S('{{appName}}');//千万不能忘记！
+if(typeof(pgvMain)=='function')pgvMain();//千万不能忘记！
 </script>
 </body>
 </html>
