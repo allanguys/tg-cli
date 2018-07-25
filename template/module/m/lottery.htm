@@ -1,7 +1,7 @@
 <!--
 ====================
-@ÒÆ¶¯¶Ë³é½±
-@ÎÄµµµØÖ·£º
+@ç§»åŠ¨ç«¯æŠ½å¥–
+@æ–‡æ¡£åœ°å€ï¼š
 http://tgideas.qq.com/webplat/info/news_version3/804/25810/25811/25812/25815/m16274/201612/529504.shtml
 ====================
 -->
@@ -11,15 +11,13 @@ http://tgideas.qq.com/webplat/info/news_version3/804/25810/25811/25812/25815/m16
 .panel .panel-btn{width:90px;height:106px;position:absolute;top:64px;left:115px;background-image:url(//game.gtimg.cn/images/js/loteryround/ossweb-img/btn.png);background-size:cover;}
 .panel.playing .panel-btn{-webkit-transform:scale(0.9);transform:scale(0.9);}
 </style>
-</head>
-<body>
 
 <div id="ltpanel" class="panel"></div>
 <script src="//game.gtimg.cn/images/js/loteryround/ossweb-img/loteryround.min.js"></script>
 <script>
-// ×ªÅÌ³õÊ¼»¯
-// µÚÒ»¸ö²ÎÊıÊÇ½±Æ·µÄ¸öÊı
-// µÚ¶ş¸öÊÇÓÃÀ´Ğı×ªµÄÔ²ÅÌ£¨Ö¸Õë²»¶¯£©
+// è½¬ç›˜åˆå§‹åŒ–
+// ç¬¬ä¸€ä¸ªå‚æ•°æ˜¯å¥–å“çš„ä¸ªæ•°
+// ç¬¬äºŒä¸ªæ˜¯ç”¨æ¥æ—‹è½¬çš„åœ†ç›˜ï¼ˆæŒ‡é’ˆä¸åŠ¨ï¼‰
 var panel=new PanelLotery({
     length:8,
     el:'#ltpanel'
@@ -28,10 +26,10 @@ var panel=new PanelLotery({
 $('.panel-btn').on('click', function(event) {
     event.preventDefault();
     if(panel.playing) return;
-    // ÑİÊ¾ÓÃ£¬Ëæ»ú×ªµ½½±Æ·n
-    // ³õÊ¼µÄÖ¸ÕëÓÒ²à¿ªÊ¼
-    // Ë³Ê±Õë·½Ïò¿ªÊ¼Ëã
-    // µÚÒ»¸ö½±Æ·ÊÇn=0
+    // æ¼”ç¤ºç”¨ï¼Œéšæœºè½¬åˆ°å¥–å“n
+    // åˆå§‹çš„æŒ‡é’ˆå³ä¾§å¼€å§‹
+    // é¡ºæ—¶é’ˆæ–¹å‘å¼€å§‹ç®—
+    // ç¬¬ä¸€ä¸ªå¥–å“æ˜¯n=0
     var n=Math.floor(Math.random()*8);
     console.log(n);
     panel.playto(n,function(){
