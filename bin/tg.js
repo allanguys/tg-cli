@@ -144,20 +144,21 @@ function createrFn() {
 	if(!configTemp.gameName == undefined){
 		configTemp.gameName = configTemp.gameName.toLocaleLowerCase();
 	}
+
     configTemp.appName = configTemp.appName.toLocaleLowerCase();
+
 	//创建文件夹
 	var d = '';
 	if(configTemp.appType == '移动专题') {
 		var type = 'act';
 		var terminal = 'm';
 		if(configTemp.gameName && fs.existsSync(templatePath + type + '/' + terminal + configTemp.gameName + '/')) {
-			var path = type + '/' + terminal + configTemp.gameName;
+			var path = type + '/' + terminal   + '/'  +  configTemp.gameName;
 			console.log('正在生成' + configTemp.gameName + '的单独模板...');
 			//生成模板
 			createTemplate(path, type, terminal)
 		} else {
 			var path = type + '/' + terminal + '/common';
-			//console.log('无' + configTemp.gameName + '的单独模板');
 			console.log('   正在生成通用模板...');
 			//生成模板
 			createTemplate(path, type, terminal)
@@ -166,15 +167,13 @@ function createrFn() {
 		var type = 'act';
 		var terminal = 'pc';
 		var path = '';
-		console.log(templatePath + type + '/' + terminal  + '/'+ configTemp.gameName + '/')
-		if(configTemp.gameName && fs.existsSync(templatePath + type + '/' + terminal + configTemp.gameName + '/')) {
-			var path = type + '/' + terminal + configTemp.gameName;
+		if(configTemp.gameName && fs.existsSync(templatePath + type + '/' + terminal + '/' + configTemp.gameName + '/')) {
+			var path = type + '/' + terminal + '/' + configTemp.gameName;
 			console.log('   正在生成' + configTemp.gameName + '的单独模板...');
 			//生成模板
 			createTemplate(path, type, terminal)
 		} else {
 			var path = type + '/' + terminal + '/common';
-			//console.log('无' + configTemp.gameName + '的单独模板');
 			console.log('   正在生成通用模板...');
 			//生成模板
 			createTemplate(path, type, terminal)
@@ -184,13 +183,12 @@ function createrFn() {
 		var terminal = 'h5video';
 		var path = '';
 		if(configTemp.gameName && fs.existsSync(templatePath + type + '/' + terminal + '/' + configTemp.gameName + '/')) {
-			var path = type + '/' + terminal + configTemp.gameName;
+			var path = type + '/' + terminal + '/'  + configTemp.gameName;
 			console.log('   正在生成' + configTemp.gameName + '的单独模板...');
 			//生成模板
 			createTemplate(path, type, terminal)
 		} else {
 			var path = type + '/' + terminal + '/common';
-			//console.log('无' + configTemp.gameName + '的单独模板');
 			console.log('   正在生成通用模板...');
 			//生成模板
 			createTemplate(path, type, terminal)
@@ -278,7 +276,7 @@ function createTemplate(path, type, terminal) {
 		};
 	}
     tg_config =  JSON.stringify(configTemp)
-	fs.readFile(templatePath + path + '/index.htm', function(err, buffer) {
+	fs.readFile(templatePath +'/'+ path + '/index.htm', function(err, buffer) {
 		if(err) throw err;
 		var str = iconv.decode(buffer, 'gbk');
 		var M = Mustache.render(str, configTemp);
