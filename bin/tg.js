@@ -276,7 +276,7 @@ function createTemplate(path, type, terminal) {
 		};
 	}
     tg_config =  JSON.stringify(configTemp)
-	fs.readFile(templatePath +'/'+ path + '/index.htm', function(err, buffer) {
+	fs.readFile(templatePath +'/'+ path + '/index.html', function(err, buffer) {
 		if(err) throw err;
 		var str = iconv.decode(buffer, 'gbk');
 		var M = Mustache.render(str, configTemp);
@@ -288,7 +288,7 @@ function createTemplate(path, type, terminal) {
 			return fsp.ensureDir(nowPath + '/' + configTemp.appName + '')
 		}).then(function(){
 			//写入文件
-			return fsp.writeFile(nowPath + '/' + configTemp.appName + '/index.htm', iconv.encode(M, 'gbk'));
+			return fsp.writeFile(nowPath + '/' + configTemp.appName + '/index.html', iconv.encode(M, 'gbk'));
 		}).then(function(){
 			//生成配置文件
 			return fsp.writeFile(nowPath + '/' + configTemp.appName + '/tg_config.json', tg_config)
