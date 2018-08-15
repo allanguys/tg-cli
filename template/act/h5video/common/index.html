@@ -12,9 +12,9 @@
 <meta name="author" content="Tencent-{{team}}" />
 <meta name="Description" content="{{description}}" />
 <meta name="Keywords" content="{{keywords}}" />
-<!-- Éè¼Æ£º{{designAuthor}}  | ÖØ¹¹£º{{author}} | ´´½¨£º{{time}}  -->
-<title>{{gamecn}}-¹Ù·½ÍøÕ¾-ÌÚÑ¶ÓÎÏ·</title>
-<!--Ä¬ÈÏ¿ªÆôÄÚÁªÑùÊ½-->
+<!-- è®¾è®¡ï¼š{{designAuthor}}  | é‡æ„ï¼š{{author}} | åˆ›å»ºï¼š{{time}}  -->
+<title>{{gamecn}}-å®˜æ–¹ç½‘ç«™-è…¾è®¯æ¸¸æˆ</title>
+<!--é»˜è®¤å¼€å¯å†…è”æ ·å¼-->
 <style>
 /*reset*/
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,
@@ -33,14 +33,14 @@ sup{vertical-align:text-top}
 sub{vertical-align:text-bottom}
 input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit}
 input,textarea,select{*font-size:100%}
-/*Çå³ı¸¡¶¯*/
+/*æ¸…é™¤æµ®åŠ¨*/
 .clearfix:after{content:"200B"; display:block; height:0; clear:both; }
 .clearfix{ *zoom:1; }
 
-        /*¼ÙÈçÌí¼ÓÁËvideo±êÇ©,¿ÉÄÜ»á³öÏÖvideo±êÇ©Ä¬ÈÏÖÃ¶¥µÄÇé¿ö,½â¾öÕâ¸öbug¿ÉÒÔÍ¨¹ıÑùÊ½ÉèÖÃÀ´¹æ±Ü;*/
+        /*å‡å¦‚æ·»åŠ äº†videoæ ‡ç­¾,å¯èƒ½ä¼šå‡ºç°videoæ ‡ç­¾é»˜è®¤ç½®é¡¶çš„æƒ…å†µ,è§£å†³è¿™ä¸ªbugå¯ä»¥é€šè¿‡æ ·å¼è®¾ç½®æ¥è§„é¿;*/
         .compatibleStyle {
             backface-visibility:hidden;
-            -webkit-backface-visibility:hidden;	/* Chrome ºÍ Safari */
+            -webkit-backface-visibility:hidden;	/* Chrome å’Œ Safari */
             -moz-backface-visibility:hidden; 	/* Firefox */
             -ms-backface-visibility:hidden; 	/* Internet Explorer */
             -webkit-perspective: 0;
@@ -51,30 +51,30 @@ input,textarea,select{*font-size:100%}
 
 </style>
 <!--
-ÍâÁªÑùÊ½°´ĞèÊ¹ÓÃ	
+å¤–è”æ ·å¼æŒ‰éœ€ä½¿ç”¨	
 <link rel="stylesheet" href="css/comm.css">  -->
-<!--ÊÓÆµ²¥·ÅÍ¨ÓÃJS-->
+<!--è§†é¢‘æ’­æ”¾é€šç”¨JS-->
 <script src="http://ossweb-img.qq.com/images/js/mmdPlugin/mmd-plugin.min.1.0.2.js"></script>
 <script src="http://ossweb-img.qq.com/images/js/mmdVideoPlayer/mmd.videoplayer.min.1.0.1.js"></script>
 <!--
-²ÎÊı¼òÒ×ËµÃ÷:
-1.view-mode = "v" "v"ÊúÆÁ,"h"ºáÆÁ;
-2.view-rotation="auto" Ä¬ÈÏ"auto" ×Ô¶¯Ğı×ª,"v"ÊúÆÁ¿ÉÊÓ,"h"ºáÆÁ¿ÉÊÓ;
-3.view-scale="exactfit" Ëõ·ÅÄ£Ê½ Ä¬ÈÏ"exactfit";
-                    "exactfit":¸ß¿íµÈÓÚÆÁÄ»¸ß¿í;
-                    "noborder":²Ã¼ôÆÌÂú;
-                    "noscale":²»Ëõ·Å;
-                    "showall":ÏÔÊ¾È«²¿;
-                    "width":¿í¶ÈµÈÓÚÆÁÄ»¿í;
-                    "height":¸ß¶ÈµÈÓÚÆÁÄ»¸ß;
-4.view-align="",Ä¬ÈÏÎª"" ¾ÓÖĞ;
-                    "t":¿¿¶¥;
-                    "l":¿¿×ó;
-                    "r":¿¿ÓÒ;
-                    "b":¿¿µ×;
-                    ¿ÉÒÔ½áºÏÒ»ÆğÓÃ£¬±ÈÈç"tl","tr","bl","br";
-5.view-width="400" Ä¿±ê¿í Ä¬ÈÏ"400";
-6.view-height="400" Ä¿±ê¸ß Ä¬ÈÏ"400";
+å‚æ•°ç®€æ˜“è¯´æ˜:
+1.view-mode = "v" "v"ç«–å±,"h"æ¨ªå±;
+2.view-rotation="auto" é»˜è®¤"auto" è‡ªåŠ¨æ—‹è½¬,"v"ç«–å±å¯è§†,"h"æ¨ªå±å¯è§†;
+3.view-scale="exactfit" ç¼©æ”¾æ¨¡å¼ é»˜è®¤"exactfit";
+                    "exactfit":é«˜å®½ç­‰äºå±å¹•é«˜å®½;
+                    "noborder":è£å‰ªé“ºæ»¡;
+                    "noscale":ä¸ç¼©æ”¾;
+                    "showall":æ˜¾ç¤ºå…¨éƒ¨;
+                    "width":å®½åº¦ç­‰äºå±å¹•å®½;
+                    "height":é«˜åº¦ç­‰äºå±å¹•é«˜;
+4.view-align="",é»˜è®¤ä¸º"" å±…ä¸­;
+                    "t":é é¡¶;
+                    "l":é å·¦;
+                    "r":é å³;
+                    "b":é åº•;
+                    å¯ä»¥ç»“åˆä¸€èµ·ç”¨ï¼Œæ¯”å¦‚"tl","tr","bl","br";
+5.view-width="400" ç›®æ ‡å®½ é»˜è®¤"400";
+6.view-height="400" ç›®æ ‡é«˜ é»˜è®¤"400";
 -->
 
 
@@ -92,8 +92,8 @@ input,textarea,select{*font-size:100%}
     <div id="end" class="compatibleStyle" style="position: absolute;display: none;">
         <img  src="http://game.gtimg.cn/images/tgideas/act/a20170330mmdVideoPlayer/videoPlayerDemo/mmd_videoPlayerAndPlug_v_end.jpg"/>
     </div>
-    <button id="startPlay" class="compatibleStyle" style="position: absolute;width: 130px;height: 60px;background-color: #ffffff;display:none;bottom: 10%;left: 335px">ĞèÒª½»»¥²ÅÄÜ²¥·Å,µãÎÒ²¥·ÅÊÓÆµ</button>
-    <button id="toEnd" class="compatibleStyle" style="position: absolute;width: 130px;height: 60px;background-color: #ffffff;display:none;bottom: 10%;right: 15%" onclick="videoPlayer.currentTimeAndPlay=106;document.getElementById('toEnd').style.display='none';">²»¿´ÁË,Ìø×ªµ½ÂäµØÒ³¸½½ü</button>
+    <button id="startPlay" class="compatibleStyle" style="position: absolute;width: 130px;height: 60px;background-color: #ffffff;display:none;bottom: 10%;left: 335px">éœ€è¦äº¤äº’æ‰èƒ½æ’­æ”¾,ç‚¹æˆ‘æ’­æ”¾è§†é¢‘</button>
+    <button id="toEnd" class="compatibleStyle" style="position: absolute;width: 130px;height: 60px;background-color: #ffffff;display:none;bottom: 10%;right: 15%" onclick="videoPlayer.currentTimeAndPlay=106;document.getElementById('toEnd').style.display='none';">ä¸çœ‹äº†,è·³è½¬åˆ°è½åœ°é¡µé™„è¿‘</button>
 </div>
 
 
@@ -101,14 +101,14 @@ input,textarea,select{*font-size:100%}
     var src='http://game.gtimg.cn/images/game/act/a20160917fbh/videos/video2.mp4';
     var videoPlayer=new MMD.VideoPlayer(
         {
-            videoElement:document.getElementById('video'),//[±ØÌî],videoÔªËØ;
-            src:src,//[±ØÌî],video src;
-            loop:false,//[¿ÉÑ¡],ÊÇ·ñÑ­»·,Ä¬ÈÏfalse,trueÎªÑ­»·;
-            muted:false,//[¿ÉÑ¡],ÊÇ·ñ¾²Òô,Ä¬ÈÏfalse;
-            poster:'',//[¿ÉÑ¡],videoÄ¬ÈÏÍ¼Æ¬;
+            videoElement:document.getElementById('video'),//[å¿…å¡«],videoå…ƒç´ ;
+            src:src,//[å¿…å¡«],video src;
+            loop:false,//[å¯é€‰],æ˜¯å¦å¾ªç¯,é»˜è®¤false,trueä¸ºå¾ªç¯;
+            muted:false,//[å¯é€‰],æ˜¯å¦é™éŸ³,é»˜è®¤false;
+            poster:'',//[å¯é€‰],videoé»˜è®¤å›¾ç‰‡;
             timesParam:[
                 {name:'showSkipBtn',time:3}
-                ],//[¿ÉÑ¡],video currenttimeÊ±¼äµã;
+                ],//[å¯é€‰],video currenttimeæ—¶é—´ç‚¹;
             onTimes:function(name){
                 console.log(name)
                 switch (name)
@@ -118,15 +118,15 @@ input,textarea,select{*font-size:100%}
                         document.getElementById('toEnd').style.display='block';
                         break;
                 }
-            },//[¿ÉÑ¡],video currenttime»Øµ÷;
+            },//[å¯é€‰],video currenttimeå›è°ƒ;
             onStart:function(){
                 document.getElementById('loading').style.display='none';
                 console.log('video start');
-            },//[¿ÉÑ¡],videoµÚÒ»¸ö»­Ãæ³öÏÖ»Øµ÷;
+            },//[å¯é€‰],videoç¬¬ä¸€ä¸ªç”»é¢å‡ºç°å›è°ƒ;
             onEnd:function(){
                 document.getElementById('end').style.display='block';
                 console.log('video end');
-            }//[¿ÉÑ¡],video²¥·ÅÍê³É»Øµ÷;
+            }//[å¯é€‰],videoæ’­æ”¾å®Œæˆå›è°ƒ;
         }
     );
 
@@ -161,19 +161,19 @@ input,textarea,select{*font-size:100%}
 {{{pop}}}
 
 
-<!--Í¨ÓÃÍ³¼Æ´úÂë-->
+<!--é€šç”¨ç»Ÿè®¡ä»£ç -->
 <script src="http://ossweb-img.qq.com/images/js/PTT/ping_tcss_tgideas_https_min.js"></script>
 <script>
-//´Ë¶Î´úÂë²»ÄÜ·Åµ½ÍâÁ´JSÖĞ£¬
-var setSite={ //ÉèÖÃÍøÕ¾ÊôĞÔ
- siteType:"{{appName}}", //±ØÌîÏî:"os"´ú±íÊÇ¹ÙÍø£¬Èç¹û²»ÊÇ£¬ÔòÌîĞ´actNameÀıÈça20160701xxx
- pageType:"index", //±ØÌîÏî:±¾Ò³ÃæµÄ¶¨Î»£»°´ÕÕÒ³Ãæº¬ÒåÌîĞ´ÀıÈçmain||list||detail||download||share||page1||pageN
- pageName:"Ê×Ò³", //±ØÌîÏî:Ò³ÃæÖĞÎÄÃû
- osact:0, //Ñ¡ÌîÏî:ÊÇ·ñÊÇ¹ÙÍø×¨Ìâ(ÔÚ¹ÙÍøÔËÓªµÄ×¨Ìâ)boolean£»Ä¬ÈÏÊÇ0£»¿ÉÒÔÔÚÁ´½ÓÉÏ¼ÓÈë²ÎÊıosact=1À´Áé»îÉèÖÃ
- ingame:0, //Ñ¡ÌîÏî:ÊÇ·ñÍ¶·ÅÔÚÓÎÏ·APPÄÚboolean£»Ä¬ÈÏÊÇ0£»¿ÉÒÔÔÚÁ´½ÓÉÏ¼ÓÈë²ÎÊıingame=1À´Áé»îÉèÖÃ
- stayTime:0 //Ñ¡ÌîÏî:ÊÇ·ñĞèÒªÍ³¼ÆÍ£ÁôÊ±³¤boolean£»Ä¬ÈÏÊÇ0
+//æ­¤æ®µä»£ç ä¸èƒ½æ”¾åˆ°å¤–é“¾JSä¸­ï¼Œ
+var setSite={ //è®¾ç½®ç½‘ç«™å±æ€§
+ siteType:"{{appName}}", //å¿…å¡«é¡¹:"os"ä»£è¡¨æ˜¯å®˜ç½‘ï¼Œå¦‚æœä¸æ˜¯ï¼Œåˆ™å¡«å†™actNameä¾‹å¦‚a20160701xxx
+ pageType:"index", //å¿…å¡«é¡¹:æœ¬é¡µé¢çš„å®šä½ï¼›æŒ‰ç…§é¡µé¢å«ä¹‰å¡«å†™ä¾‹å¦‚main||list||detail||download||share||page1||pageN
+ pageName:"é¦–é¡µ", //å¿…å¡«é¡¹:é¡µé¢ä¸­æ–‡å
+ osact:0, //é€‰å¡«é¡¹:æ˜¯å¦æ˜¯å®˜ç½‘ä¸“é¢˜(åœ¨å®˜ç½‘è¿è¥çš„ä¸“é¢˜)booleanï¼›é»˜è®¤æ˜¯0ï¼›å¯ä»¥åœ¨é“¾æ¥ä¸ŠåŠ å…¥å‚æ•°osact=1æ¥çµæ´»è®¾ç½®
+ ingame:0, //é€‰å¡«é¡¹:æ˜¯å¦æŠ•æ”¾åœ¨æ¸¸æˆAPPå†…booleanï¼›é»˜è®¤æ˜¯0ï¼›å¯ä»¥åœ¨é“¾æ¥ä¸ŠåŠ å…¥å‚æ•°ingame=1æ¥çµæ´»è®¾ç½®
+ stayTime:0 //é€‰å¡«é¡¹:æ˜¯å¦éœ€è¦ç»Ÿè®¡åœç•™æ—¶é•¿booleanï¼›é»˜è®¤æ˜¯0
 }
-if(typeof(pgvMain)=='function')pgvMain();//Ç§Íò²»ÄÜÍü¼Ç£¡
+if(typeof(pgvMain)=='function')pgvMain();//åƒä¸‡ä¸èƒ½å¿˜è®°ï¼
 </script>
 </body>
 </html>
