@@ -40,6 +40,21 @@ input,textarea,select{*font-size:100%}
 <!--
 外联样式按需使用	
 <link rel="stylesheet" href="css/comm.css">-->
+<script>
+    //移动端适配 (以设计稿750px宽度为例，一个按钮设计稿中为100px,单位定义为1rem)
+    !function (win) {
+        var pw = 750;//定义设计稿宽度750
+        var d = document.documentElement;
+        function a() {
+            d.style.fontSize = d.clientWidth / pw * 10 / 16 * 1000 + "%"
+        }
+        var b = null;
+        win.addEventListener("resize", function () {
+            clearTimeout(b);
+            b = setTimeout(a, 300) }, !1);
+        a()
+    }(window);
+</script>
 </head>
 
 <body>
@@ -52,11 +67,11 @@ input,textarea,select{*font-size:100%}
 {{{lottery}}}
 {{{pop}}}
 <!--通用统计代码-->
-<script src="http://ossweb-img.qq.com/images/js/PTT/ping_tcss_tgideas_https_min.js"></script>
+<script src="//ossweb-img.qq.com/images/js/PTT/ping_tcss_tgideas_https_min.js"></script>
 <!--TG share-->
 <script src="//ossweb-img.qq.com/images/js/TGMobileShare/TGMobileShare.min.js"></script>
 <!--IEG通用底部-->
-<script id="afooter" src="http://game.gtimg.cn/images/js/2018foot/foot.js"></script>
+<script id="afooter" src="//game.gtimg.cn/images/js/2018foot/foot.js"></script>
 <script>
 //分享
 TGMobileShare({
