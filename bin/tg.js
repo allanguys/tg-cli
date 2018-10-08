@@ -275,8 +275,18 @@ function createTemplate(path, type, terminal) {
 			configTemp['team'] = 'Tgideas'
 		};
 	}
-    tg_config =  JSON.stringify(configTemp)
-	fs.readFile(templatePath +'/'+ path + '/index.htm', function(err, buffer) {
+    tg_config =  JSON.stringify(configTemp);
+
+
+    let rPath = templatePath +'/'+ path + '/';
+    let fileName = 'index.htm';
+
+    try {
+        fs.accessSync(rPath+fileName, fs.constants.R_OK | fs.constants.W_OK);
+    } catch (err) {
+        fileName = 'index.html'
+    }
+	fs.readFile(rPath+fileName, function(err, buffer) {
 		if(err) throw err;
 		var str = iconv.decode(buffer, 'gbk');
 		var M = Mustache.render(str, configTemp);
